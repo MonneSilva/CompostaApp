@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-Widget buildDialog(BuildContext context) {
+Widget buildDialog(BuildContext context,List<String> content) {
   final dialogContent = new Stack(
     children: <Widget>[
       Container(
@@ -29,7 +29,7 @@ Widget buildDialog(BuildContext context) {
             mainAxisSize: MainAxisSize.min, // To make the card compact
             children: <Widget>[
               Text(
-                "title",
+                content.elementAt(0),
                 style: TextStyle(
                   fontSize: 24.0,
                   fontWeight: FontWeight.w700,
@@ -37,7 +37,7 @@ Widget buildDialog(BuildContext context) {
               ),
               SizedBox(height: 16.0),
               Text(
-                "We are using a Container and BoxDecoration for making the card and since the half of circular avatar should be on the card, we add padding and margin accordingly with the attribute Consts.avatarRadius We are using a Container and BoxDecoration for making the card and since the half of circular avatar should be on the card, we add padding and margin accordingly with the attribute Consts.avatarRadiusWe are using a Container and BoxDecoration for making the card and since the half of circular avatar should be on the card, we add padding and margin accordingly with the attribute Consts.avatarRadiusWe are using a Container and BoxDecoration for making the card and since the half of circular avatar should be on the card, we add padding and margin accordingly with the attribute Consts.avatarRadiusWe are using a Container and BoxDecoration for making the card and since the half of circular avatar should be on the card, we add padding and margin accordingly with the attribute Consts.avatarRadius",
+                content.elementAt(1),
                 textAlign: TextAlign.justify,
                 style: TextStyle(
                   fontSize: 16.0,

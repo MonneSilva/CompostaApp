@@ -1,14 +1,12 @@
 
+import 'package:composta_app/assets/content.dart';
 import 'package:composta_app/tools/btncontent.dart';
 import 'package:composta_app/tools/carouselcontent.dart';
 import 'package:composta_app/tools/carouselview.dart';
 import 'package:flutter/material.dart';
 
 
-List<CarouselWidgetContent> contentL = [
-  new CarouselWidgetContent("", "desc1", "lib/assets/img/plant.png"),
-  new CarouselWidgetContent("Dos", "desc2", "lib/assets/img/plant.png")
-];
+
 
 
 class Body extends StatefulWidget {
@@ -20,10 +18,19 @@ class Body extends StatefulWidget {
 class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
-    /*String s;
-    new File('lib/appContent.json').readAsString().then((c) => s+=c);
-*/
-    return CarouselView(contentL, new BtnContent("Comenzar","","/Home"));
+    return CarouselView(getInfo(), new BtnContent("Comenzar","","/Informative"));
+  }
+  List<CarouselWidgetContent> getInfo()
+  {
+    final List<CarouselWidgetContent> info=new List();
+
+    Section section=Sections.content.elementAt(2) as Section;
+    
+    for (ListContent contents in section.content) {
+      info.add(new  CarouselWidgetContent(contents.title,contents.content.elementAt(1) as String,contents.content.elementAt(0) as String));
+    }
+    return info;
+
   }
 
   

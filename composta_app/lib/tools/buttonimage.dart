@@ -46,7 +46,7 @@ class ImageButton extends StatelessWidget {
     return GestureDetector(
         onTap: () {
           Navigator.push(context,
-              MaterialPageRoute(builder: (context) => buildDialog(context)));
+              MaterialPageRoute(builder: (context) => buildDialog(context,["",""])));
         },
         child: new Stack(children: <Widget>[
           box,
