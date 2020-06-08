@@ -1,3 +1,4 @@
+import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_widget/carousel_widget.dart';
 import 'package:composta_app/tools/btncontent.dart';
@@ -34,7 +35,7 @@ final BtnContent btn;
           child: ListView(
         children: <Widget>[
           Container(
-            height: 45.0,
+            height: 80.0,
             margin: const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 0.0),
             child: Text(
               index.elementAt(i).title,
@@ -45,14 +46,15 @@ final BtnContent btn;
           ),
           Container(
             height: 250.0,
-            margin: const EdgeInsets.fromLTRB(20.0, 90.0, 20.0, 0.0),
-            child: Image.asset(
+            margin: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 50.0),
+            child: FlareActor(index.elementAt(i).file, animation: index.elementAt(i).animation),
+            /*Image.asset(
               index.elementAt(i).imge,
-            ),
+            ),*/
           ),
           Container(
-            height: 80.0,
-            margin: const EdgeInsets.fromLTRB(50.0, 12.0, 50.0, 0.0),
+            height: 90.0,
+            margin: const EdgeInsets.fromLTRB(50.0, 5.0, 50.0, 0.0),
             child: Text(
               index.elementAt(i).description,
               textAlign: TextAlign.center,
@@ -61,8 +63,10 @@ final BtnContent btn;
               style: TextStyle(fontSize: 15),
             ),
           ),
-          Visibility(
-              child: SizedBox(
+          Container(
+          margin: const EdgeInsets.fromLTRB(90.0, 10.0, 90.0, 10.0),
+          child: Visibility(
+            child: SizedBox(
                 width: 20.0,
                 height: 30.0,
                 child: RaisedButton(
@@ -80,7 +84,7 @@ final BtnContent btn;
               maintainSize: true,
               maintainAnimation: true,
               maintainState: true,
-              visible: state,),
+              visible: state,),),
         ],
       ));
       listings.add(
@@ -94,13 +98,15 @@ final BtnContent btn;
 
   List<String> description = List();
 
-  List<String> imagenames = List();
+  List<String> files = List();
+  List<String> animations = List();
 
   void initializeData(List<CarouselWidgetContent> items) {
     for (var i = 0; i < items.length; i++) {
       titles.add(items.elementAt(i).title);
       description.add(items.elementAt(i).description);
-      imagenames.add(items.elementAt(i).imge);
+      files.add(items.elementAt(i).file);
+      animations.add(items.elementAt(i).animation);
     }
   }
 }

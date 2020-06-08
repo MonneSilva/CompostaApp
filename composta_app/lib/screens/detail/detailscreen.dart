@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:composta_app/bloc/bloc-prov.dart';
-import 'package:composta_app/screens/home/components/body.dart';
+import 'package:composta_app/screens/detail/components/body.dart';
 import 'package:composta_app/bloc/example-bloc.dart';
 import 'package:composta_app/tools/appbar.dart';
 import 'package:composta_app/tools/menu.dart';
@@ -34,7 +34,7 @@ class _DetailScreenState extends State<DetailScreen> {
       bloc: ExampleBloc(),
       child: Scaffold(
         appBar: appBarbuild(context),
-        floatingActionButton: boomMenuBuild(context),
+        floatingActionButton: boomMenuBuild(context,13),
         body: Body(),
       ),
     );

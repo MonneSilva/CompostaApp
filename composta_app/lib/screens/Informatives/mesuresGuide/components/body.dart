@@ -24,7 +24,7 @@ class _BodyState extends State<Body> {
     Section section=Sections.content.elementAt(7) as Section;
     
     for (ListContent contents in section.content) {
-      info.add(new  CarouselWidgetContent(contents.title,contents.content.elementAt(1) as String,contents.content.elementAt(0) as String));
+      info.add(new  CarouselWidgetContent(contents.title,contents.content.elementAt(2) as String,contents.content.elementAt(0) as String,contents.content.elementAt(1) as String));
     }
     return info;
 

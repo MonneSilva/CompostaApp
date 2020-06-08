@@ -25,7 +25,7 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
-
+  flare_flutter: any
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -39,9 +39,18 @@ flutter:
   assets:
     - lib/assets/img/plant.png
     - lib/assets/img/logo.png
-    - lib/appContent.xml
-    - lib/appContent.json
-
+    - lib/assets/img/logo-name.png
+    - lib/assets/img/Que_es_compostaje.flr
+    - lib/assets/img/Sobre_Composta.flr
+    - lib/assets/img/Termometro.flr
+    - lib/assets/img/Calculadora.flr
+    - lib/assets/img/Humedad.flr
+    - lib/assets/img/PH.flr
+    - lib/assets/img/contenedor.png
+    - lib/assets/img/jardin.png
+    - lib/assets/img/Control_Composta.flr
+    - lib/assets/img/PF.flr
+    - lib/assets/img/None.flr
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 
 
 
+
 class Body extends StatefulWidget {
   @override
   _BodyState createState() => _BodyState();
@@ -16,9 +17,13 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
+  get child => null;
+
   @override
   Widget build(BuildContext context) {
-    return CarouselView(getInfo(), new BtnContent("Comenzar","","/Informative"));
+    return 
+     
+      CarouselView(getInfo(), new BtnContent("Comenzar","","/Home"));
   }
   List<CarouselWidgetContent> getInfo()
   {
@@ -27,7 +32,7 @@ class _BodyState extends State<Body> {
     Section section=Sections.content.elementAt(2) as Section;
     
     for (ListContent contents in section.content) {
-      info.add(new  CarouselWidgetContent(contents.title,contents.content.elementAt(1) as String,contents.content.elementAt(0) as String));
+      info.add(new  CarouselWidgetContent(contents.title,contents.content.elementAt(2) as String,contents.content.elementAt(0) as String,contents.content.elementAt(1) as String));
     }
     return info;
 

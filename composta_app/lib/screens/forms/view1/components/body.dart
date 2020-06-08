@@ -7,11 +7,11 @@ class Body extends StatelessWidget {
    
    List<Widget> getWidgets(BuildContext context)
   {
-    Section section=Sections.content.elementAt(2) as Section;
+    Section section=Sections.content.elementAt(4) as Section;
     List<Widget> widgets= new List();
     widgets.add(Text(section.title));
     for (ListContent contents in section.content) {
-      widgets.add(new ImageButton(contents.content.elementAt(0),contents.content.elementAt(1),contents.content.elementAt(2)));
+      widgets.add(new ImageButton(contents.content.elementAt(0),contents.title,""));
     }
     widgets.add(new RaisedButton(
                   shape: RoundedRectangleBorder(

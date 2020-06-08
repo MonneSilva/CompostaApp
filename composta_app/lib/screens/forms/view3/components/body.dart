@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:composta_app/tools/buttonimage.dart';
 import 'package:composta_app/tools/carouselcontent.dart';
-import 'package:composta_app/tools/carouselview.dart';
 
 class Body extends StatelessWidget {
   List<CarouselWidgetContent> contentL = [
-  new CarouselWidgetContent("", "desc1", "lib/assets/img/plant.png"),
-  new CarouselWidgetContent("Dos", "desc2", "lib/assets/img/plant.png")
+  new CarouselWidgetContent("", "desc1", "lib/assets/img/plant.png",""),
+  new CarouselWidgetContent("Dos", "desc2", "lib/assets/img/plant.png","")
 ];
   @override
   Widget build(BuildContext context) {

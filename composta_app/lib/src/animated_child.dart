@@ -36,13 +36,14 @@ class AnimatedChild extends AnimatedWidget {
   }
 
   Widget build(BuildContext context) {
+    //Section section=Sections.content.elementAt(12) as Section;
     final Animation<double> animation = listenable;
 
     final Widget buttonChild = animation.value > 50.0
         ? Container(
           width: animation.value,
           height: animation.value,
-          child: Row(
+          child: Column(
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.all(10.0),
@@ -60,12 +61,6 @@ class AnimatedChild extends AnimatedWidget {
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(color: (titleColor == null) ? Colors.black : titleColor, fontSize: 16.0),
                       ),
-                      SizedBox(height: 3.0),
-                      /*Text(
-                        subtitle,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(color: (subTitleColor == null) ? Colors.black : subTitleColor, fontSize: 12.0),
-                      )*/
                     ],
                   ),
                 ),
@@ -79,8 +74,9 @@ class AnimatedChild extends AnimatedWidget {
           );
 
     return Container(
+      margin: EdgeInsets.symmetric(horizontal: 8),
       width: MediaQuery.of(context).size.width - 30,
-      height: 80.0,
+      height: 150.0,
       padding: EdgeInsets.only(bottom: 72 - animation.value),
       child: GestureDetector(
         onTap: _performAction,

@@ -34,7 +34,7 @@ class _ViewForm1State extends State<ViewForm1> {
       bloc: ExampleBloc(),
       child: Scaffold(
         appBar: appBarbuild(context),
-        floatingActionButton: boomMenuBuild(context),
+        floatingActionButton: boomMenuBuild(context,12),
         body: Body(),
       ),
     );

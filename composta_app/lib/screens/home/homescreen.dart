@@ -34,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
       bloc: ExampleBloc(),
       child: Scaffold(
         appBar: appBarbuild(context),
-        floatingActionButton: boomMenuBuild(context),
+        floatingActionButton: boomMenuBuild(context,12),
         body: Body(),
       ),
     );

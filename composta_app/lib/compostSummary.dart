@@ -7,19 +7,22 @@ class CompostSummary extends StatelessWidget {
 const CompostSummary({Key key, this.compost}) : super(key: key);
 @override
   Widget build(BuildContext context) {
-    String nextView='/NewCompost';
+    String nextView='/CompostDetail';
+
+    //Imagen
     final cardImage = new Container(
-    margin: new EdgeInsets.symmetric(vertical: 20.0),
+    margin: new EdgeInsets.symmetric(vertical: 15.0),
     alignment: FractionalOffset.centerLeft,
     child: new Image(
       image: new AssetImage(compost.image),
-      height: 92.0,
-      width: 92.0,
+      height: 130.0,
+      width: 130.0,
     ),
   );
 
+//Texto de card
 final cardContent= new Container(
-    margin: new EdgeInsets.fromLTRB(76.0, 16.0, 16.0, 16.0),
+    margin: new EdgeInsets.fromLTRB(80.0, 16.0, 16.0, 16.0),
             constraints: new BoxConstraints.expand(),
             child: new Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,9 +43,9 @@ final cardContent= new Container(
   final cardDetail = new Container(  
       child: cardContent,
       height: 130.0,
-      margin: new EdgeInsets.only(left: 46.0,bottom:20.0,top:20.0),
+      margin: new EdgeInsets.only(left: 60.0,bottom:20.0,top:20.0),
       decoration: new BoxDecoration(
-        color: Colors.blue,
+        color: Colors.cyan[600],
         shape: BoxShape.rectangle,
         borderRadius: new BorderRadius.circular(8.0),
         boxShadow: <BoxShadow>[

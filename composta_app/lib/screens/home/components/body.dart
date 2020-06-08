@@ -26,21 +26,28 @@ class _BodyState extends State<Body> {
   }
 
   List<Widget> getWidgets() {
-    Section section=Sections.content.elementAt(11) as Section;
+    Section section=Sections.content.elementAt(10) as Section;
+    Section compostImage=Sections.content.elementAt(11) as Section;
     List<Widget> widgets=List();
     widgets.add(Text(section.title, style: TextStyle(fontSize: 25)));
 
     int i=0;
     for (Compost compost in composts) {
+      if(compost.type==1)
+      {
+        compost.image=compostImage.content.elementAt(0);
+      }else{
+         compost.image=compostImage.content.elementAt(1);
+      }
       widgets.add(CompostSummary(compost:compost)); 
       i++;
     }
-    /*for (int j = 3-i; j<3; j--) {
-      //for (ListContent content in section.content) 
+     
+    for (int j = 3-i; j>0; j--) {
       {
         widgets.add(getCard(section.content.elementAt(0),section.content.elementAt(1))); 
       } 
-    }*/
+    }
     return widgets;
   }
 
@@ -51,8 +58,8 @@ class _BodyState extends State<Body> {
     alignment: FractionalOffset.centerLeft,
     child: new Image(
       image: new AssetImage(image),
-      height: 92.0,
-      width: 92.0,
+      height: 100.0,
+      width: 100.0,
     ),
   );
 
@@ -74,12 +81,12 @@ final cardContent= new Container(
             ),
   );
 
-  final cardDetail = new Container(  
+  final cardBack = new Container(  
       child: cardContent,
       height: 130.0,
-      margin: new EdgeInsets.only(left: 46.0,bottom:20.0,top:20.0),
+      margin: new EdgeInsets.only(left: 60.0,bottom:20.0,top:20.0),
       decoration: new BoxDecoration(
-        color: Colors.blue,
+        color: Colors.cyan[600],
         shape: BoxShape.rectangle,
         borderRadius: new BorderRadius.circular(8.0),
         boxShadow: <BoxShadow>[
@@ -93,10 +100,10 @@ final cardContent= new Container(
 
     return GestureDetector(
         onTap: () {
-//Navigator.pushNamed(context, nextView,arguments: compost);
+       Navigator.pushNamed(context,'/NewCompost', arguments:"" );
         },
         child: new Stack(children: <Widget>[
-          cardDetail,
+          cardBack,
           cardImage,
         ]));
   }

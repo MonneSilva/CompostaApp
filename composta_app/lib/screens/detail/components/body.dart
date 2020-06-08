@@ -1,76 +1,61 @@
+import 'package:composta_app/assets/content.dart';
+import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
-import 'package:composta_app/compostSummary.dart';
 import 'package:composta_app/dataModel/compost.dart';
-import '../../../separator.dart';
+
 
 class Body extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     final Compost aux = ModalRoute.of(context).settings.arguments;
-    return Container(
-        constraints: new BoxConstraints.expand(),
-        color: new Color(0xFF736AB7),
-        child: new Stack (
-          children: <Widget>[
-            _getBackground(aux),
-            _getGradient(),
-            _getContent(aux),
-          ],
-        ),
-    );
-  }
-
-  Container _getBackground (Compost aux) {
-    return new Container(
-            child: new Image.network(aux.image,
-              fit: BoxFit.cover,
-              height: 300.0,
-            ),
-            constraints: new BoxConstraints.expand(height: 295.0),
-          );
-  }
-
-  Container _getGradient() {
-    return new Container(
-            margin: new EdgeInsets.only(top: 190.0),
-            height: 110.0,
-            decoration: new BoxDecoration(
-              gradient: new LinearGradient(
-                colors: <Color>[
-                  new Color(0x00736AB7),
-                  new Color(0xFF736AB7)
-                ],
-                stops: [0.0, 0.9],
-                begin: const FractionalOffset(0.0, 0.0),
-                end: const FractionalOffset(0.0, 1.0),
-              ),
-            ),
-          );
+    return           _getContent(aux);
   }
 
   Container _getContent(Compost aux) {
-    final _overviewTitle = "Overview".toUpperCase();
+    Section section = Sections.content.elementAt(8) as Section;
+    ListContent aux=section.content.elementAt(3);
     return new Container(
-            child: new ListView(
-              padding: new EdgeInsets.fromLTRB(0.0, 72.0, 0.0, 32.0),
-              children: <Widget>[
-                new CompostSummary(compost:aux),
-                new Container(
-                  padding: new EdgeInsets.symmetric(horizontal: 32.0),
-                  child: new Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      new Text(_overviewTitle),
-                      new Separator(),
-                      new Text(
-                         aux.image),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          );
+      child: new ListView(
+        padding: new EdgeInsets.fromLTRB(0.0, 30.0, 0.0, 32.0),
+        children: <Widget>[
+          Container(
+            height: 180.0,
+            margin: const EdgeInsets.symmetric(horizontal:10),
+            child: FlareActor(aux.content.elementAt(0), animation: aux.content.elementAt(1))
+                    
+          ),
+          new Container(
+           // decoration: myBoxDecoration(),
+            padding: new EdgeInsets.fromLTRB(100.0, 10.0, 20.0, 10.0),
+            child: new Text(section.title,
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30)),
+          ),
+          //getField(section),
+        ],
+      ),
+    );
   }
+}
 
+BoxDecoration myBoxDecoration() {
+  return BoxDecoration(
+    border: Border.all(),
+  );
+}
+
+
+
+getField(Section section) {
+  //for (ListContent content in section.content) 
+  return new Container(
+        child: new ListView(
+            padding: new EdgeInsets.fromLTRB(0.0, 30.0, 0.0, 32.0),
+            children: <Widget>[
+          new Text("Title"),
+          TextField(
+            decoration: InputDecoration(
+                border: InputBorder.none, hintText: 'Enter a search term'),
+          ),
+           new Text("aux"),
+        ]));
 }
