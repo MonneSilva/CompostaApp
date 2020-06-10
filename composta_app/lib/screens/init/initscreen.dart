@@ -1,17 +1,17 @@
 import 'package:composta_app/bloc/bloc-prov.dart';
 import 'package:composta_app/bloc/example-bloc.dart';
-import 'package:composta_app/screens/welcome/components/body.dart';
+import 'package:composta_app/screens/init/components/body.dart';
 import 'package:composta_app/tools/appbar.dart';
 import 'package:flutter/material.dart';
 
 
 
-class WelcomeScreen extends StatefulWidget {
+class InitScreen extends StatefulWidget {
   @override
-  _WelcomeScreenState createState() => _WelcomeScreenState();
+  _InitScreenState createState() => _InitScreenState();
 }
 
-class _WelcomeScreenState extends State<WelcomeScreen> {
+class _InitScreenState extends State<InitScreen> {
   ExampleBloc exampleBloc;
 
   @override
@@ -19,6 +19,13 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     super.initState();
 
     exampleBloc = ExampleBloc();
+    
+  Future.delayed(const Duration(milliseconds: 10000), () {
+  setState(() {
+    Navigator.pushReplacementNamed(context, '/Welcome');
+  });
+  });
+
   }
 
   @override
@@ -33,7 +40,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     return BlocProvider(
       bloc: exampleBloc,
       child: Scaffold(
-        appBar:  appBarbuild(context),
         body: Body(),
       ),
     );

@@ -7,12 +7,22 @@ import 'package:composta_app/dataModel/compost.dart';
 class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final Compost aux = ModalRoute.of(context).settings.arguments;
-    return           _getContent(aux);
+    return  _getContent();
+  }
+  List<Widget> getFields() {
+     
+   Section section = Sections.content.elementAt(8) as Section;
+
+    List<Widget> widget = List();
+    for (ListContent aux in section.content) {
+      widget.add(field(aux));
+    }
+    return widget;
   }
 
-  Container _getContent(Compost aux) {
-    Section section = Sections.content.elementAt(8) as Section;
+  Container _getContent() {
+    
+   Section section = Sections.content.elementAt(8) as Section;
     ListContent aux=section.content.elementAt(3);
     return new Container(
       child: new ListView(
@@ -30,7 +40,11 @@ class Body extends StatelessWidget {
             child: new Text(section.title,
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30)),
           ),
-          //getField(section),
+          Container(
+            child: Column(
+          children: getFields(),
+            ),
+      )
         ],
       ),
     );
@@ -45,7 +59,7 @@ BoxDecoration myBoxDecoration() {
 
 
 
-getField(Section section) {
+getField() {
   //for (ListContent content in section.content) 
   return new Container(
         child: new ListView(
@@ -59,3 +73,47 @@ getField(Section section) {
            new Text("aux"),
         ]));
 }
+
+ Widget field(ListContent aux)
+ { return Container(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          Container(
+            margin: EdgeInsets.all(20),
+            padding: EdgeInsets.only(left: 20),
+            child: Text(aux.title, style: TextStyle(fontSize: 25)),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(color: Colors.green, spreadRadius: 3),
+              ],
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.only(left: 0, right: 20),
+            padding: EdgeInsets.only(left: 10),
+            child: TextField(
+              decoration:
+                  InputDecoration(border: InputBorder.none, hintText: '0.00'),
+            ),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(color: Colors.green, spreadRadius: 3),
+              ],
+            ),
+          ),
+          IconButton(
+            icon: Icon(Icons.info),
+            color: Colors.black,
+            onPressed: () {
+             // buildDialog(context);
+            },
+          ),
+        ],
+      ),
+    );
+ }

@@ -111,36 +111,43 @@ class Sections {
         //5
         /*title*/ "¿Dónde quiere compostar?",
         /*content*/ [
-          new ListContent(
-            /*title*/ "CONTENEDOR O CAJAS",
-            /*content*/ [
-              new ListContent(
-                  /*title*/ "Bote plástico",
+         /*0 */ListContent(
+              /*title*/ "Seleccione una opción:",
+              /*content*/ [
+                 ListContent(
+                  /*title*/ "CONTENEDOR O CAJAS",
                   /*content*/ [
-                    "Conseguir un bate plástico, de preferencia de 20 L o si se prefiere más grande en consideración de la cantidad de residuos generados",
-                    "Perforar orificios con diámetro de 2-3 cm, en la pared del bote para permitir que circule aire, se sugiere utilizar un taladro." +
-                        "Los orificios deben estar separados entre sí. Hacer 3 filas de orificios cada 10 cm alrededor del contorno. Como se muestra a continuación.",
-                    "Perforar 5 orificios en la base del bote.",
-                    "Colocar una capa de 10 cm de paja, aserrín o poda para que absorba el exceso de humedad"
-                  ]),
-              new ListContent(
-                  /*title*/ "Múltiple con cajas",
-                  /*content*/ [
-                    "Se pueden utilizar cajas de madera o plásticas que se utilizan para el transporte de frutas, botellas, etc. ",
-                    "Conseguir malla metálica y recortarla en forma de cruz, como se muestra en la ilustración.",
-                    "Colocar y sujetar la malla en las paredes y base de las cajas para que contenga los residuos.",
-                    "Colocar una base de materia café (vegetación seca) en cada caja",
-                    "Rellenar con los residuos orgánicos intercalando con capas de materia café.",
-                    "Nota: procurar que la última capa sea de materia café."
-                  ]),
-            ],
-          ),
+                    new ListContent(
+                        /*title*/ "Bote plástico",
+                        /*content*/ [
+                          "lib/assets/img/None.flr",
+                          "Conseguir un bate plástico, de preferencia de 20 L o si se prefiere más grande en consideración de la cantidad de residuos generados",
+                          "Perforar orificios con diámetro de 2-3 cm, en la pared del bote para permitir que circule aire, se sugiere utilizar un taladro." +
+                              "Los orificios deben estar separados entre sí. Hacer 3 filas de orificios cada 10 cm alrededor del contorno. Como se muestra a continuación.",
+                          "Perforar 5 orificios en la base del bote.",
+                          "Colocar una capa de 10 cm de paja, aserrín o poda para que absorba el exceso de humedad"
+                        ]),
+                    new ListContent(
+                        /*title*/ "Múltiple con cajas",
+                        /*content*/ [
+                          "lib/assets/img/None.flr",
+                          "Se pueden utilizar cajas de madera o plásticas que se utilizan para el transporte de frutas, botellas, etc. ",
+                          "Conseguir malla metálica y recortarla en forma de cruz, como se muestra en la ilustración.",
+                          "Colocar y sujetar la malla en las paredes y base de las cajas para que contenga los residuos.",
+                          "Colocar una base de materia café (vegetación seca) en cada caja",
+                          "Rellenar con los residuos orgánicos intercalando con capas de materia café.",
+                          "Nota: procurar que la última capa sea de materia café."
+                        ]),
+                  ],
+                )
+              ]),
           new ListContent(
               /*title*/ "JARDÍN",
               /*content*/ [
                 new ListContent(
                     /*title*/ "Caja",
                     /*content*/ [
+                      "lib/assets/img/None.flr",
                       "Cavar un orificio de poca profundidad (30cm).",
                       "Colocar una caja sin fondo, o colocar 4 pallets simulando la caja, con el fin de que el material esté en contacto con el suelo.",
                       "Agregar los residuos previamente picados o cortados en trozos pequeños.",
@@ -153,6 +160,7 @@ class Sections {
                 new ListContent(
                     /*title*/ "Malla metálica",
                     /*content*/ [
+                      "lib/assets/img/None.flr",
                       "Se requieren:" +
                           "Malla metálica 1m * 3m.\n" +
                           "3 o 4 postes de madera o de metal de poco más de 1m, preferentemente.\n" +
@@ -165,7 +173,7 @@ class Sections {
     new Section(
         //6
         /*title*/ "¿Qué residuos generas?",
-        /*content*/ []),
+        /*content*/ ["Seleccione las opciones correspondientes:"]),
     new Section(
         //7
         /*title*/ "¿Cómo medir?",
@@ -323,10 +331,22 @@ class Sections {
               /*content*/ [
                 "lib/assets/img/None.flr",
                 "",
-                "",
+                "/Stadistics",
                 Colors.blueAccent,
               ])
-        ])
+        ]),
+    new Section(
+        //14
+        /*title*/ "¿Dónde quiere compostar?",
+        /*content*/ [
+          new ListContent(
+              /*title*/ "CAJAS O CONTENEDORES",
+              /*content*/ ["lib/assets/img/plant.png", 1]),
+          new ListContent(
+              /*title*/ "JARDÍN",
+              /*content*/ ["lib/assets/img/plant.png", "2"])
+        ]),
+        
   ];
 }
 

@@ -28,9 +28,9 @@ final cardContent= new Container(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 new Container(height: 4.0),
-                Text(compost.name, style: TextStyle(fontSize: 30)),
+                Text(compost.name, style: TextStyle(fontSize: 25)),
                 new Container(height: 10.0),
-                new Text(compost.type.toString(), style: TextStyle(fontSize: 25)),
+                new Text("05/06/2019", style: TextStyle(fontSize: 20)),
                 new Container(
                     margin: new EdgeInsets.symmetric(vertical: 8.0),
                     height: 2.0,

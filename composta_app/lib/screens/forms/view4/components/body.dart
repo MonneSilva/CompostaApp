@@ -1,10 +1,12 @@
+import 'package:composta_app/assets/content.dart';
 import 'package:flutter/material.dart';
 
 
 class Body extends StatelessWidget {
-  List<String> fields = ["Fruta", "Verdura"];
+  List<String> fields = ["Fruta", "Verdura","Tierra","Ejemplo1","Ejemplo2"];
   @override
   Widget build(BuildContext context) {
+     
     return Container(
       child: ListView(
         padding: const EdgeInsets.all(5),
@@ -14,9 +16,10 @@ class Body extends StatelessWidget {
   }
  
 List<Widget> getFields(fields,BuildContext context) {
+   Section section = Sections.content.elementAt(6) as Section;
     List<Widget> widget = List();
-    widget.add(Text("¿Qué residuos genera"));
-    widget.add(Text("Seleccione las opciones correspondientes:"));
+    widget.add(Text(section.title,style: TextStyle(fontSize: 20),textAlign: TextAlign.center));
+    widget.add(Text(section.content.elementAt(0),style: TextStyle(fontSize: 15)));
     for (String f in fields) {
       widget.add(field(f));
     }
@@ -28,7 +31,7 @@ List<Widget> getFields(fields,BuildContext context) {
             ),
             child: const Text('Siguiente', style: TextStyle(fontSize: 20)),
             onPressed: () {
-              Navigator.pushNamed(context, '/NewCompost5');
+              Navigator.pushNamed(context, '/NewCompost6');
             },
           ));
     return widget;

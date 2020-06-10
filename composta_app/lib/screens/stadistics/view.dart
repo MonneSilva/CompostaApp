@@ -1,16 +1,18 @@
+import 'package:composta_app/screens/stadistics/components/body.dart';
 import 'package:flutter/material.dart';
 import 'package:composta_app/bloc/bloc-prov.dart';
-import 'package:composta_app/screens/home/components/body.dart';
+
 import 'package:composta_app/bloc/example-bloc.dart';
 import 'package:composta_app/tools/appbar.dart';
 import 'package:composta_app/tools/menu.dart';
 
-class HomeScreen extends StatefulWidget {
+
+class Stadistics extends StatefulWidget {
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _StadisticsState createState() => _StadisticsState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _StadisticsState extends State<Stadistics> {
   ExampleBloc example2Bloc;
 
   @override
@@ -18,7 +20,9 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
 
     example2Bloc = ExampleBloc();
+    
   }
+  
 
   @override
   void dispose() {
@@ -30,14 +34,12 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-        bloc: ExampleBloc(),
-        child: WillPopScope(
-          onWillPop: () async => false,
-          child: Scaffold(
-            appBar: appBarbuild(context),
-            floatingActionButton: boomMenuBuild(context, 12),
-            body: Body(),
-          ),
-        ));
+      bloc: ExampleBloc(),
+      child: Scaffold(
+        appBar: appBarbuild(context),
+        body: Body(),
+      ),
+    );
   }
 }
+

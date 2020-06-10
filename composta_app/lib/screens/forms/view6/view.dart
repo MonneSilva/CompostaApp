@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:composta_app/bloc/bloc-prov.dart';
-import 'package:composta_app/screens/home/components/body.dart';
+import 'package:composta_app/screens/forms/view6/components/body.dart';
 import 'package:composta_app/bloc/example-bloc.dart';
 import 'package:composta_app/tools/appbar.dart';
 import 'package:composta_app/tools/menu.dart';
 
-class HomeScreen extends StatefulWidget {
+
+class ViewForm6 extends StatefulWidget {
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _ViewForm6State createState() => _ViewForm6State();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _ViewForm6State extends State<ViewForm6> {
   ExampleBloc example2Bloc;
 
   @override
@@ -18,7 +19,13 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
 
     example2Bloc = ExampleBloc();
+      Future.delayed(const Duration(milliseconds: 3000), () {
+  setState(() {
+    Navigator.pushReplacementNamed(context, '/Home');
+  });
+  });
   }
+  
 
   @override
   void dispose() {
@@ -30,14 +37,13 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-        bloc: ExampleBloc(),
-        child: WillPopScope(
-          onWillPop: () async => false,
-          child: Scaffold(
-            appBar: appBarbuild(context),
-            floatingActionButton: boomMenuBuild(context, 12),
-            body: Body(),
-          ),
-        ));
+      bloc: ExampleBloc(),
+      child: Scaffold(
+        appBar: appBarbuild(context),
+        floatingActionButton: boomMenuBuild(context,12),
+        body: Body(),
+      ),
+    );
   }
 }
+

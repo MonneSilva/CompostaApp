@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'CompostaApp',
         theme: appTheme(),
-        initialRoute: '/Welcome',
+        initialRoute: '/Init',
         routes: routes,
       ),
     );

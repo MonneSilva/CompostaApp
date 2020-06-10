@@ -1,5 +1,6 @@
 import 'package:composta_app/bloc/bloc-prov.dart';
 import 'package:composta_app/bloc/example-bloc.dart';
+import 'package:composta_app/screens/home/homescreen.dart';
 import 'package:composta_app/screens/welcome/components/body.dart';
 import 'package:composta_app/tools/appbar.dart';
 import 'package:flutter/material.dart';
@@ -15,11 +16,15 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   ExampleBloc exampleBloc;
 
   @override
-  void initState() {
+  void initState()  {
     super.initState();
 
     exampleBloc = ExampleBloc();
+  
+ 
+    
   }
+ 
 
   @override
   void dispose() {

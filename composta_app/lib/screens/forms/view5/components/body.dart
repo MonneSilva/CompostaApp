@@ -16,7 +16,7 @@ class Residuo {
 
 class Body extends StatelessWidget {
 
-  List<Residuo> fields = [new Residuo("Resiudos","N","C","H2O"),new Residuo("Frutas","15","8","9")];
+  List<Residuo> fields = [new Residuo("Resiudos","N","C","H2O"),new Residuo("Frutas","15","8","9"),new Residuo("Frutas","15","8","9"),new Residuo("Frutas","15","8","9")];
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -29,21 +29,23 @@ class Body extends StatelessWidget {
  
 List<Widget> getFields(fields,BuildContext context) {
     List<Widget> widget = List();
-    widget.add(Text("¿Qué residuos genera"));
+    widget.add(Text("¿Qué residuos genera",style: TextStyle(fontSize: 20),textAlign: TextAlign.center));
     for (Residuo f in fields) {
       widget.add(field(f));
     }
      widget.add(
-    RaisedButton(
+    Container(
+          margin: const EdgeInsets.fromLTRB(100.0, 10.0, 90.0, 20.0),
+          child: new RaisedButton(
             shape: RoundedRectangleBorder(
               borderRadius: new BorderRadius.circular(18.0),
               side: BorderSide(color: Colors.transparent),
             ),
             child: const Text('Finalizar', style: TextStyle(fontSize: 20)),
             onPressed: () {
-              Navigator.pushNamed(context, '/MeasuresGuide');
+              Navigator.pushNamed(context, '/NewCompost6');
             },
-          ));
+          )));
     return widget;
   }
 
@@ -57,16 +59,18 @@ List<Widget> getFields(fields,BuildContext context) {
                 children: [
                   TableRow( children: [
                     Column(children:[
-                      Text(text.residuo)
+                      Container(
+                      color: Colors.green,
+                      child: Text(text.residuo, style: TextStyle(fontSize: 20)))
                     ]),
                     Column(children:[
-                      Text(text.n)
+                      Text(text.n, style: TextStyle(fontSize: 20))
                     ]),
                     Column(children:[
-                      Text(text.c)
+                      Text(text.c , style: TextStyle(fontSize: 20))
                     ]),
                      Column(children:[
-                       Text(text.h20)
+                       Text(text.h20 , style: TextStyle(fontSize: 20))
                     ]),
                   ]),
                 ],

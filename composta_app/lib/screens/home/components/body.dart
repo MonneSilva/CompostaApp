@@ -29,7 +29,7 @@ class _BodyState extends State<Body> {
     Section section=Sections.content.elementAt(10) as Section;
     Section compostImage=Sections.content.elementAt(11) as Section;
     List<Widget> widgets=List();
-    widgets.add(Text(section.title, style: TextStyle(fontSize: 25)));
+    widgets.add(Text(section.title, style: TextStyle(fontSize: 25),textAlign: TextAlign.center));
 
     int i=0;
     for (Compost compost in composts) {
@@ -70,7 +70,7 @@ final cardContent= new Container(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 new Container(height: 4.0),
-                Text(title, style: TextStyle(fontSize: 30)),
+                Text(title, style: TextStyle(fontSize: 25)),
                 new Container(height: 10.0),
                 new Container(
                     margin: new EdgeInsets.symmetric(vertical: 8.0),

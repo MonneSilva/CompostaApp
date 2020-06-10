@@ -48,9 +48,6 @@ final BtnContent btn;
             height: 250.0,
             margin: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 50.0),
             child: FlareActor(index.elementAt(i).file, animation: index.elementAt(i).animation),
-            /*Image.asset(
-              index.elementAt(i).imge,
-            ),*/
           ),
           Container(
             height: 90.0,
@@ -77,7 +74,7 @@ final BtnContent btn;
                   child: Text(btn.text,
                       style: TextStyle(fontSize: 20)),
                   onPressed: () {
-                    Navigator.pushNamed(context, btn.actionRoute);
+                    Navigator.pushReplacementNamed(context, btn.actionRoute);
                   },
                 ),
               ),

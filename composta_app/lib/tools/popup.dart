@@ -50,7 +50,7 @@ Widget buildDialog(BuildContext context,List<String> content) {
                   onPressed: () {
                     Navigator.of(context).pop(); // To close the dialog
                   },
-                  child: Text("buttonText"),
+                  child: Text("OK"),
                 ),
               ),
             ],
