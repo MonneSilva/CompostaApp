@@ -19,8 +19,8 @@ class _BodyState extends State<Body> {
   Widget build(BuildContext context) {
     return Container(
       child: ListView(
-        padding: const EdgeInsets.all(5),
-        children: getWidgets()
+        padding: const EdgeInsets.symmetric(vertical:50)  ,
+              children: getWidgets()
       )
     );
   }
@@ -30,7 +30,7 @@ class _BodyState extends State<Body> {
     Section compostImage=Sections.content.elementAt(11) as Section;
     List<Widget> widgets=List();
     widgets.add(Text(section.title, style: TextStyle(fontSize: 25),textAlign: TextAlign.center));
-
+ widgets.add(Container(height: 50,));
     int i=0;
     for (Compost compost in composts) {
       if(compost.type==1)
@@ -54,10 +54,10 @@ class _BodyState extends State<Body> {
   Widget getCard(String image,String title) {
     //String nextView='/NewCompost';
     final cardImage = new Container(
-    margin: new EdgeInsets.symmetric(vertical: 20.0),
+    margin: new EdgeInsets.symmetric(vertical: 30.0),
     alignment: FractionalOffset.centerLeft,
     child: new Image(
-      image: new AssetImage(image),
+      image: new AssetImage("lib/assets/img/plant.png"),
       height: 100.0,
       width: 100.0,
     ),

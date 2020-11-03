@@ -45,12 +45,12 @@ final BtnContent btn;
             ),
           ),
           Container(
-            height: 250.0,
+            height: 350.0,
             margin: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 50.0),
             child: FlareActor(index.elementAt(i).file, animation: index.elementAt(i).animation),
           ),
           Container(
-            height: 90.0,
+            height: 140.0,
             margin: const EdgeInsets.fromLTRB(50.0, 5.0, 50.0, 0.0),
             child: Text(
               index.elementAt(i).description,
