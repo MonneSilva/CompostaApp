@@ -1,9 +1,7 @@
-
-class BtnContent
-{
+class BtnContent {
   String text;
   String imageRoute;
   String actionRoute;
-BtnContent(this.text, this.imageRoute,this.actionRoute);
-
+  int state;
+  BtnContent(this.text, this.imageRoute, this.actionRoute, this.state);
 }

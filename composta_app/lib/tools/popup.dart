@@ -1,7 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-Widget buildDialog(BuildContext context,List<String> content) {
+  
+Widget buildDialog(BuildContext context, List<String> content) {
   final dialogContent = new Stack(
     children: <Widget>[
       Container(
@@ -50,7 +51,7 @@ Widget buildDialog(BuildContext context,List<String> content) {
                   onPressed: () {
                     Navigator.of(context).pop(); // To close the dialog
                   },
-                  child: Text("OK"),
+                  child: Text("ok"),
                 ),
               ),
             ],

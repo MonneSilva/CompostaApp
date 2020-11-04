@@ -62,41 +62,41 @@ class BoomMenu extends StatefulWidget {
   final Color titleColor;
   //final Color subTitleColor;
 
-  BoomMenu({
-    this.children = const [],
-    this.scrollVisible = true,
-    this.title,
-    this.subtitle,
-    this.backgroundColor,
-    this.titleColor,
-    //this.subTitleColor,
-    this.foregroundColor,
-    this.elevation = 6.0,
-    this.overlayOpacity = 0.8,
-    this.overlayColor = Colors.white,
-    this.animatedIcon,
-    this.animatedIconTheme,
-    this.child,
-    this.marginBottom = 0,
-    this.marginLeft = 16,
-    this.marginRight = 0,
-    this.onOpen,
-    this.onClose,
-    this.overlayVisible = false,
-    this.fabMenuBorder = const CircleBorder(),
-    this.fabAlignment = Alignment.centerRight,
-    this.fabPaddingRight = 0,
-    this.fabPaddingLeft = 0,
-    this.fabPaddingTop = 0,
-    this.onPress,
-    this.animationSpeed = 150
-  });
+  BoomMenu(
+      {this.children = const [],
+      this.scrollVisible = true,
+      this.title,
+      this.subtitle,
+      this.backgroundColor,
+      this.titleColor,
+      //this.subTitleColor,
+      this.foregroundColor,
+      this.elevation = 6.0,
+      this.overlayOpacity = 0.8,
+      this.overlayColor = Colors.white,
+      this.animatedIcon,
+      this.animatedIconTheme,
+      this.child,
+      this.marginBottom = 0,
+      this.marginLeft = 20,
+      this.marginRight = -10,
+      this.onOpen,
+      this.onClose,
+      this.overlayVisible = false,
+      this.fabMenuBorder = const CircleBorder(),
+      this.fabAlignment = Alignment.centerRight,
+      this.fabPaddingRight = 0,
+      this.fabPaddingLeft = 0,
+      this.fabPaddingTop = 0,
+      this.onPress,
+      this.animationSpeed = 150});
 
   @override
   _BoomMenuState createState() => _BoomMenuState();
 }
 
-class _BoomMenuState extends State<BoomMenu> with SingleTickerProviderStateMixin {
+class _BoomMenuState extends State<BoomMenu>
+    with SingleTickerProviderStateMixin {
   AnimationController _controller;
 
   bool _open = false;
@@ -110,8 +110,9 @@ class _BoomMenuState extends State<BoomMenu> with SingleTickerProviderStateMixin
     );
   }
 
-  Duration _calculateMainControllerDuration() =>
-      Duration(milliseconds: widget.animationSpeed + widget.children.length * (widget.animationSpeed / 5).round());
+  Duration _calculateMainControllerDuration() => Duration(
+      milliseconds: widget.animationSpeed +
+          widget.children.length * (widget.animationSpeed / 5).round());
 
   @override
   void dispose() {
@@ -157,27 +158,28 @@ class _BoomMenuState extends State<BoomMenu> with SingleTickerProviderStateMixin
           var childAnimation = Tween(begin: 0.0, end: 62.0).animate(
             CurvedAnimation(
               parent: this._controller,
-              curve: Interval(0, singleChildrenTween * (index + 1),
+              curve: Interval(
+                0,
+                singleChildrenTween * (index + 1),
               ),
             ),
           );
 
           return AnimatedChild(
-            animation: childAnimation,
-            index: index,
-            visible: _open,
-            backgroundColor: child.backgroundColor,
-            elevation: child.elevation,
-            child: child.child,
-            title: child.title,
-            subtitle: child.subtitle,
-            titleColor: child.titleColor,
-           // subTitleColor : child.subTitleColor,
-            onTap: child.onTap,
-            toggleChildren: () {
-              if (!widget.overlayVisible) _toggleChildren();
-            }
-          );
+              animation: childAnimation,
+              index: index,
+              visible: _open,
+              backgroundColor: child.backgroundColor,
+              elevation: child.elevation,
+              child: child.child,
+              title: child.title,
+              subtitle: child.subtitle,
+              titleColor: child.titleColor,
+              // subTitleColor : child.subTitleColor,
+              onTap: child.onTap,
+              toggleChildren: () {
+                if (!widget.overlayVisible) _toggleChildren();
+              });
         })
         .toList()
         .reversed
@@ -195,7 +197,7 @@ class _BoomMenuState extends State<BoomMenu> with SingleTickerProviderStateMixin
         child: BackgroundOverlay(
           animation: _controller,
           color: widget.overlayColor,
-          opacity: widget.overlayOpacity,
+          //opacity: widget.overlayOpacity,
         ),
       ),
     );
@@ -206,7 +208,7 @@ class _BoomMenuState extends State<BoomMenu> with SingleTickerProviderStateMixin
         ? AnimatedIcon(
             icon: widget.animatedIcon,
             progress: _controller,
-            color: widget.animatedIconTheme?.color,
+            color: Colors.brown,
             size: widget.animatedIconTheme?.size,
           )
         : widget.child;
@@ -215,34 +217,26 @@ class _BoomMenuState extends State<BoomMenu> with SingleTickerProviderStateMixin
 
     var animatedFloatingButton = AnimatedFloatingButton(
       visible: widget.scrollVisible,
-      backgroundColor: widget.backgroundColor,
-      foregroundColor: widget.foregroundColor,
-      elevation: widget.elevation,
+      backgroundColor: Colors.transparent,
+      //  elevation: widget.elevation,
       onLongPress: _toggleChildren,
-      callback: (_open || widget.onPress == null) ? _toggleChildren : widget.onPress,
+      callback:
+          (_open || widget.onPress == null) ? _toggleChildren : widget.onPress,
       child: child,
-      shape: widget.fabMenuBorder
     );
 
     return Positioned(
-      left: widget.marginLeft + 16,
-      bottom: widget.marginBottom,
-      right: widget.marginRight,
+      left: widget.marginLeft,
+      bottom: 60,
+      right: -20,
       child: Container(
         alignment: Alignment.bottomCenter,
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          /*children: List.from(fabChildren)
-            ..add(
-              Container(
-                margin: EdgeInsets.only(top: 8.0, right: 2.0),
-                child: animatedFloatingButton,
-              ),
-            ),*/
-          children: <Widget> [
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
             SizedBox(height: kToolbarHeight + 40),
             Visibility(
               visible: _open,

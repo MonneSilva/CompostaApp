@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:composta_app/tools/popup.dart';
+//import 'package:composta_app/tools/popup.dart';
 
 class ImageButton extends StatelessWidget {
   final String image;
   final String text;
 
-  const ImageButton( this.image, this.text);
+  const ImageButton(this.image, this.text);
   @override
   Widget build(BuildContext context) {
     final boxContent = new Container(
@@ -44,10 +44,7 @@ class ImageButton extends StatelessWidget {
         ));
 
     return GestureDetector(
-        onTap: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => buildDialog(context,["",""])));
-        },
+        onTap: () {},
         child: new Stack(children: <Widget>[
           box,
         ]));

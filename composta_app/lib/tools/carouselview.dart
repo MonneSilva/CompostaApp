@@ -4,31 +4,31 @@ import 'package:carousel_widget/carousel_widget.dart';
 import 'package:composta_app/tools/btncontent.dart';
 import 'package:composta_app/tools/carouselcontent.dart';
 
-
 class CarouselView extends StatefulWidget {
   final List<CarouselWidgetContent> contentL;
   final BtnContent btn;
-  const CarouselView( this.contentL,this.btn);
+  const CarouselView(this.contentL, this.btn);
   @override
-  _CarouselViewState createState() => _CarouselViewState(this.contentL,this.btn);
+  _CarouselViewState createState() =>
+      _CarouselViewState(this.contentL, this.btn);
 }
 
 class _CarouselViewState extends State<CarouselView> {
   final List<CarouselWidgetContent> contentL;
-final BtnContent btn;
+  final BtnContent btn;
   _CarouselViewState(this.contentL, this.btn);
   @override
   Widget build(BuildContext context) {
     return Carousel(
-      listViews: _getScreen(contentL,btn),
+      listViews: _getScreen(contentL, btn),
     );
   }
 
-  List<Fragment> _getScreen(List<CarouselWidgetContent> index,BtnContent btn) {
+  List<Fragment> _getScreen(List<CarouselWidgetContent> index, BtnContent btn) {
     bool state = false;
     List listings = new List<Fragment>();
     for (int i = 0; i < index.length; i++) {
-      if (i == index.length- 1) {
+      if (i == index.length - 1) {
         state = true;
       }
       var fragment = Fragment(
@@ -45,12 +45,16 @@ final BtnContent btn;
             ),
           ),
           Container(
-            height: 350.0,
+            height: 250.0,
             margin: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 50.0),
-            child: FlareActor(index.elementAt(i).file, animation: index.elementAt(i).animation),
+            child: FlareActor(index.elementAt(i).file,
+                animation: index.elementAt(i).animation),
+            /*Image.asset(
+              index.elementAt(i).imge,
+            ),*/
           ),
           Container(
-            height: 140.0,
+            height: 90.0,
             margin: const EdgeInsets.fromLTRB(50.0, 5.0, 50.0, 0.0),
             child: Text(
               index.elementAt(i).description,
@@ -61,9 +65,9 @@ final BtnContent btn;
             ),
           ),
           Container(
-          margin: const EdgeInsets.fromLTRB(90.0, 10.0, 90.0, 10.0),
-          child: Visibility(
-            child: SizedBox(
+            margin: const EdgeInsets.fromLTRB(90.0, 10.0, 90.0, 10.0),
+            child: Visibility(
+              child: SizedBox(
                 width: 20.0,
                 height: 30.0,
                 child: RaisedButton(
@@ -71,17 +75,36 @@ final BtnContent btn;
                     borderRadius: new BorderRadius.circular(18.0),
                     side: BorderSide(color: Colors.transparent),
                   ),
-                  child: Text(btn.text,
-                      style: TextStyle(fontSize: 20)),
+                  child: Text(btn.text, style: TextStyle(fontSize: 20)),
                   onPressed: () {
-                    Navigator.pushReplacementNamed(context, btn.actionRoute);
+                    switch (btn.state) {
+                      case 1:
+                        {
+                          Navigator.of(context).pop();
+                        }
+                        break;
+
+                      case 2:
+                        {
+                          Navigator.of(context).pushNamed(btn.actionRoute);
+                        }
+                        break;
+                      default:
+                        {
+                          Navigator.of(context).pushNamedAndRemoveUntil(
+                              btn.actionRoute, (Route<dynamic> route) => false);
+                        }
+                        break;
+                    }
                   },
                 ),
               ),
               maintainSize: true,
               maintainAnimation: true,
               maintainState: true,
-              visible: state,),),
+              visible: state,
+            ),
+          ),
         ],
       ));
       listings.add(

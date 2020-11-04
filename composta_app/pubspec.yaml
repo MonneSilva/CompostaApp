@@ -22,6 +22,7 @@ dependencies:
   carousel_widget:
   url_launcher: ^3.0.0
   charts_flutter: ^0.9.0
+  carousel_slider: ^1.4.1
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -52,12 +53,11 @@ flutter:
     - lib/assets/img/Control_Composta.flr
     - lib/assets/img/PF.flr
     - lib/assets/img/None.flr
-    - lib/assets/img/Bote_flechas_giran.flr
+    - lib/assets/img/Contenedor_20L.flr
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
-
 
   # To add assets to your application, add an assets section, like this:
   # assets:
