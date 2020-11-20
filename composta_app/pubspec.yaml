@@ -54,6 +54,9 @@ flutter:
     - lib/assets/img/PF.flr
     - lib/assets/img/None.flr
     - lib/assets/img/Contenedor_20L.flr
+    - lib/assets/img/vaciar_material_cafe.flr
+    - lib/assets/img/perforaciones_0.flr
+    - lib/assets/img/perforaciones_1.flr
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
