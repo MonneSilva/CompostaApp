@@ -1,12 +1,15 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
+
 class Body extends StatefulWidget {
   @override
   State createState() => new _BodyState();
 }
 
 class _BodyState extends State<Body> {
+  int _currentIndex = 0;
+  int _opc = 1;
   @override
   void initState() {
     super.initState();
@@ -19,38 +22,36 @@ class _BodyState extends State<Body> {
 
   @override
   Widget build(BuildContext context) {
-    int _currentIndex = 0;
-    int _option = 1;
     List cardList1 = [
       buildItem(
           context,
           "1",
-          "Obtener un bate plástico de 20L o si se prefiere más grande en consideración de la cantidad de residuos generados",
+          "Obtener un bote plástico de 20L o si se prefiere más grande en consideración de la cantidad de residuos generados",
           Animation(
-              file: "lib/assets/img/Contenedor_20L.flr",
-              animation: "")),
+              file: "lib/assets/img/contenedor_20.flr",
+              animation: "contenedor_201")),
       buildItem(
           context,
           "2",
           "Perforar orificios con diámetro de 2-3 cm, en la pared del bote.\n" +
               "Hacer 3 filas de orificios cada 10 cm alrededor del contorno.",
           Animation(
-              file: "lib/assets/img/Control_Composta.flr",
-              animation: "Control_Corriendo")),
+              file: "lib/assets/img/perforaciones_0.flr",
+              animation: "perforaciones_0")),
       buildItem(
           context,
           "3",
           "Perforar 5 orificios en la base del bote",
           Animation(
-              file: "lib/assets/img/Control_Composta.flr",
-              animation: "Control_Corriendo")),
+              file: "lib/assets/img/perforaciones_1.flr",
+              animation: "perforaciones_1")),
       buildItem(
           context,
           "4",
           "Colocar una capa de 10 cm de paja, aserrín o poda para que absorba el exceso de humedad",
           Animation(
-              file: "lib/assets/img/Control_Composta.flr",
-              animation: "Control_Corriendo"))
+              file: "lib/assets/img/vaciar_material_cafe.flr",
+              animation: "vaciar_material_cafe"))
     ];
     List cardList2 = [
       buildItem(
@@ -90,7 +91,7 @@ class _BodyState extends State<Body> {
               animation: "Control_Corriendo"))
     ];
     getcardList() {
-      if (_option == 1)
+      if (_opc == 1)
         return cardList1;
       else
         return cardList2;
@@ -113,8 +114,8 @@ class _BodyState extends State<Body> {
           children: <Widget>[
             new Image(
               image: new AssetImage(image),
-              height: 50.0,
-              width: 50.0,
+              height: 70.0,
+              width: 70.0,
             ),
             new Container(height: 2.0),
             Text(
@@ -126,14 +127,14 @@ class _BodyState extends State<Body> {
         ),
       );
 
-      getBox(Color color) {
+      getBox() {
         return new Container(
             child: boxContent,
-            height: 130.0,
-            width: 130.0,
+            height: 150.0,
+            width: 150.0,
             margin: new EdgeInsets.all(10),
             decoration: new BoxDecoration(
-              color: color,
+              color: (_opc == opc) ? Colors.orange : Colors.white,
               shape: BoxShape.rectangle,
               borderRadius: new BorderRadius.circular(8.0),
               boxShadow: <BoxShadow>[
@@ -146,20 +147,18 @@ class _BodyState extends State<Body> {
             ));
       }
 
-      Color _color = Colors.orange;
       return GestureDetector(
           onTap: () {
             setState(() {
-              _color = Colors.green;
-              _option = opc;
-              print(_option);
-              print(_color);
+              _opc = opc;
+              print(_opc);
+              _currentIndex = 0;
             });
 
             //option = opc;
           },
           child: new Stack(children: <Widget>[
-            getBox(_color),
+            getBox(),
           ]));
     }
 
@@ -207,7 +206,6 @@ class _BodyState extends State<Body> {
                   height: MediaQuery.of(context).size.height * 0.30,
                   width: MediaQuery.of(context).size.width,
                   child: Card(
-                    color: Colors.white,
                     child: card,
                   ),
                 );
@@ -223,8 +221,7 @@ class _BodyState extends State<Body> {
                 margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color:
-                      _currentIndex == index ? Colors.blueAccent : Colors.grey,
+                  color: _currentIndex == index ? Colors.green : Colors.grey,
                 ),
               );
             }),
@@ -244,12 +241,13 @@ class _BodyState extends State<Body> {
                   },
                 ),
                 RaisedButton(
+                  color: Colors.green,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(18.0),
-                    side: BorderSide(color: Colors.transparent),
+                    side: BorderSide(color: Colors.green),
                   ),
-                  child:
-                      const Text('Siguiente', style: TextStyle(fontSize: 20)),
+                  child: Text('Siguiente',
+                      style: TextStyle(fontSize: 20, color: Colors.white)),
                   onPressed: () {
                     Navigator.pushNamed(context, '/NewCompost4');
                   },
@@ -274,13 +272,8 @@ Widget buildItem(BuildContext context, String number, String instruction,
     child: Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
-        Text(number,
-            style: TextStyle(
-                color: Colors.black,
-                fontSize: 20.0,
-                fontWeight: FontWeight.bold)),
         Container(
-            height: 180,
+            height: 220,
             child: FlareActor(animation.file, animation: animation.animation)),
         Flexible(
             child: Text(instruction,

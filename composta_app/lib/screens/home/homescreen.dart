@@ -32,47 +32,42 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: appBarbuild(context),
-        floatingActionButton: Padding(
-            padding: const EdgeInsets.only(bottom: 0),
-            child: BoomMenu(
-                animatedIcon: AnimatedIcons.menu_close,
-                animatedIconTheme: IconThemeData(size: 22.0),
-                overlayColor: Colors.black,
-                overlayOpacity: 0.7,
-                children: [
-                  MenuItem(
-                      child: Container(
-                          height: 50,
-                          child: Image.asset('lib/assets/img/logo.png',
-                              fit: BoxFit.cover, height: 250)),
-                      title: "Acerca de",
-                      titleColor: Colors.white,
-                      backgroundColor: Colors.blueAccent,
-                      onTap: () {
-                        Navigator.of(context).pushNamed("/About");
-                      }),
-                  MenuItem(
-                      child: Container(
-                          height: 50,
-                          child: Image.asset('lib/assets/img/logo.png',
-                              fit: BoxFit.cover, height: 250)),
-                      title: "Guía",
-                      titleColor: Colors.white,
-                      backgroundColor: Colors.blueAccent,
-                      onTap: () {
-                        Navigator.of(context).pushNamed("/Welcome");
-                      }),
-                ])),
-        body: Container(
-            child: ListView(
-                padding: const EdgeInsets.all(5), children: getWidgets())));
+        floatingActionButton: BoomMenu(
+            animatedIcon: AnimatedIcons.menu_close,
+            animatedIconTheme: IconThemeData(size: 22.0),
+            overlayColor: Colors.black,
+            overlayOpacity: 0.7,
+            children: [
+              MenuItem(
+                  title: "Acerca de COMPI",
+                  titleColor: Colors.white,
+                  backgroundColor: Colors.lightGreen,
+                  onTap: () {
+                    Navigator.of(context).pushNamed("/About");
+                  }),
+              MenuItem(
+                  title: "Guía",
+                  titleColor: Colors.white,
+                  backgroundColor: Colors.blueAccent,
+                  onTap: () {
+                    Navigator.of(context).pushNamed("/Init");
+                  }),
+            ]
+            //getMenu(context, id),
+            ),
+        body: SizedBox.expand(
+            child: Container(
+                child: ListView(
+                    padding: const EdgeInsets.all(5),
+                    children: getWidgets()))));
   }
 
   List<Widget> getWidgets() {
     Section section = Sections.content.elementAt(10) as Section;
     Section compostImage = Sections.content.elementAt(11) as Section;
     List<Widget> widgets = List();
-    widgets.add(Text(section.title, style: TextStyle(fontSize: 25)));
+    widgets.add(Text(section.title,
+        textAlign: TextAlign.center, style: TextStyle(fontSize: 30)));
 
     int i = 0;
     for (Compost compost in composts) {

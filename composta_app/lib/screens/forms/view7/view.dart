@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:composta_app/screens/forms/view5/components/body.dart';
+import 'package:composta_app/screens/forms/view7/components/body.dart';
 import 'package:composta_app/tools/appbar.dart';
 
-class ViewForm5 extends StatefulWidget {
+class ViewForm7 extends StatefulWidget {
   @override
-  _ViewForm5State createState() => _ViewForm5State();
+  _ViewForm7State createState() => _ViewForm7State();
 }
 
-class _ViewForm5State extends State<ViewForm5> {
+class _ViewForm7State extends State<ViewForm7> {
   @override
   void initState() {
     super.initState();

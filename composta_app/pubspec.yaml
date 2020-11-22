@@ -42,6 +42,9 @@ flutter:
     - lib/assets/img/plant.png
     - lib/assets/img/logo.png
     - lib/assets/img/logo-name.png
+    - lib/assets/img/labsol.png
+    - lib/assets/img/unnamed.png
+    - lib/assets/img/ipn.png
     - lib/assets/img/Que_es_compostaje.flr
     - lib/assets/img/Sobre_Composta.flr
     - lib/assets/img/Termometro.flr
@@ -53,7 +56,7 @@ flutter:
     - lib/assets/img/Control_Composta.flr
     - lib/assets/img/PF.flr
     - lib/assets/img/None.flr
-    - lib/assets/img/Contenedor_20L.flr
+    - lib/assets/img/contenedor_20.flr
     - lib/assets/img/vaciar_material_cafe.flr
     - lib/assets/img/perforaciones_0.flr
     - lib/assets/img/perforaciones_1.flr

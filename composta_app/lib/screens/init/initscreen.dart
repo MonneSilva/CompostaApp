@@ -1,13 +1,12 @@
-import 'package:composta_app/screens/welcome/components/body.dart';
 import 'package:composta_app/tools/appbar.dart';
 import 'package:flutter/material.dart';
 
-class WelcomeScreen extends StatefulWidget {
+class InitScreen extends StatefulWidget {
   @override
-  _WelcomeScreenState createState() => _WelcomeScreenState();
+  _InitScreenState createState() => _InitScreenState();
 }
 
-class _WelcomeScreenState extends State<WelcomeScreen> {
+class _InitScreenState extends State<InitScreen> {
   @override
   void initState() {
     super.initState();
@@ -21,8 +20,13 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBarbuild(context),
-      body: Body(),
-    );
+        appBar: appBarbuild(context),
+        body: Container(
+          height: 150.0,
+          margin: const EdgeInsets.fromLTRB(20.0, 50.0, 20.0, 50.0),
+          child: Image.asset(
+            "lib/assets/img/logo-name.png",
+          ),
+        ));
   }
 }

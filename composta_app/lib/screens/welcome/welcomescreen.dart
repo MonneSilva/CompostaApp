@@ -1,5 +1,8 @@
-import 'package:composta_app/screens/welcome/components/body.dart';
+import 'package:composta_app/assets/content.dart';
 import 'package:composta_app/tools/appbar.dart';
+import 'package:composta_app/tools/btncontent.dart';
+import 'package:composta_app/tools/carouselcontent.dart';
+import 'package:composta_app/tools/carouselview.dart';
 import 'package:flutter/material.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -21,8 +24,23 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBarbuild(context),
-      body: Body(),
-    );
+        appBar: appBarbuild(context),
+        body: CarouselView(
+            getInfo(), new BtnContent("Comenzar", "", "/Home", 3)));
+  }
+
+  List<CarouselWidgetContent> getInfo() {
+    final List<CarouselWidgetContent> info = new List();
+
+    Section section = Sections.content.elementAt(2) as Section;
+
+    for (ListContent contents in section.content) {
+      info.add(new CarouselWidgetContent(
+          contents.title,
+          contents.content.elementAt(2) as String,
+          contents.content.elementAt(0) as String,
+          contents.content.elementAt(1) as String));
+    }
+    return info;
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 // ignore: must_be_immutable
 class Body extends StatelessWidget {
@@ -45,7 +46,7 @@ class Body extends StatelessWidget {
     );
     widget.add(Text("Seleccione las opciones correspondientes:"));
     for (String f in fields) {
-      widget.add(Field(f, false).build(context));
+      widget.add(Field(f).build(context));
     }
     widget.add(
       Row(
@@ -71,7 +72,7 @@ class Body extends StatelessWidget {
               child: Text('Siguiente',
                   style: TextStyle(fontSize: 20, color: Colors.white)),
               onPressed: () {
-                Navigator.pushNamed(context, '/NewCompost7');
+                Navigator.pushNamed(context, '/NewCompost5');
               },
             ),
           ]),
@@ -82,28 +83,65 @@ class Body extends StatelessWidget {
 
 class Field {
   final String label;
-  bool check;
 
   int value = 0;
   // Create a text controller and use it to retrieve the current value
   // of the TextField.
   final myController = TextEditingController();
 
-  Field(this.label, this.check);
+  Field(this.label);
 
   Widget build(BuildContext context) {
     myController.text = "0.00";
     return Container(
-        color: this.check ? Colors.lightGreen : Colors.white,
-        child: Row(children: <Widget>[
-          Checkbox(
-            onChanged: (bool value) {
-              check = value;
-            },
-            activeColor: Color(0xFF6200EE),
-            value: this.check,
-          ),
-          Text(this.label),
+        child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                label,
+                textAlign: TextAlign.justify,
+                style: TextStyle(fontSize: 15),
+              ),
+              Container(
+                  child: Row(children: <Widget>[
+                IconButton(
+                  icon: Icon(Icons.remove),
+                  onPressed: () {
+                    myController.text =
+                        (double.parse(myController.text) - 1).toString();
+                  },
+                ),
+                Container(
+                  width: 100,
+                  height: 50,
+                  child: TextField(
+                    controller: myController,
+                    keyboardType: TextInputType.number,
+                    inputFormatters: <TextInputFormatter>[
+                      FilteringTextInputFormatter.digitsOnly
+                    ],
+                    decoration: InputDecoration(
+                      hintText: "0.00",
+                      fillColor: Colors.white,
+                      border: new OutlineInputBorder(
+                          borderRadius: new BorderRadius.circular(0.0)),
+                    ),
+                  ),
+                ),
+                IconButton(
+                  icon: Icon(Icons.add),
+                  onPressed: () {
+                    myController.text =
+                        (double.parse(myController.text) + 1).toString();
+                  },
+                )
+              ])),
+            ],
+          )
         ]));
   }
 }

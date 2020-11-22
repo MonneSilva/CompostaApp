@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-//import 'package:composta_app/screens/forms/view1/components/body.dart';
-
 import 'package:composta_app/tools/appbar.dart';
-import 'package:composta_app/tools/menu.dart';
 
 class ViewForm1 extends StatefulWidget {
   @override
@@ -10,9 +7,11 @@ class ViewForm1 extends StatefulWidget {
 }
 
 class _ViewForm1State extends State<ViewForm1> {
+  int _opc;
   @override
   void initState() {
     super.initState();
+    _opc = 1;
   }
 
   @override
@@ -22,72 +21,68 @@ class _ViewForm1State extends State<ViewForm1> {
 
   @override
   Widget build(BuildContext context) {
-    int _opc;
-
     buildImageButton(String image, String text, int opc) {
-      final boxContent = new Container(
-        margin: new EdgeInsets.all(20),
-        constraints: new BoxConstraints.expand(),
-        child: new Column(
+      final boxContent = Container(
+        margin: EdgeInsets.all(20),
+        constraints: BoxConstraints.expand(),
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            new Image(
-              image: new AssetImage(image),
-              height: 120.0,
-              width: 120.0,
+            Image(
+              image: AssetImage(image),
+              height: 180.0,
+              width: 180.0,
             ),
-            new Container(height: 2.0),
+            Container(height: 10.0),
             Text(
               text,
-              style: TextStyle(fontSize: 15),
+              style: TextStyle(fontSize: 20),
               textAlign: TextAlign.center,
             ),
           ],
         ),
       );
 
-      getBox(Color color) {
-        return new Container(
+      getBox() {
+        return Container(
             child: boxContent,
-            height: 200.0,
-            width: 200.0,
-            margin: new EdgeInsets.all(10),
-            decoration: new BoxDecoration(
-              color: color,
+            height: 290.0,
+            width: 290.0,
+            margin: EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              color: (_opc == opc) ? Colors.orange : Colors.white,
               shape: BoxShape.rectangle,
-              borderRadius: new BorderRadius.circular(8.0),
+              borderRadius: BorderRadius.circular(8.0),
               boxShadow: <BoxShadow>[
-                new BoxShadow(
+                BoxShadow(
                   color: Colors.black12,
                   blurRadius: 10.0,
-                  offset: new Offset(0.0, 10.0),
+                  offset: Offset(0.0, 10.0),
                 ),
               ],
             ));
       }
 
-      Color _color = Colors.orange;
       return GestureDetector(
           onTap: () {
             setState(() {
               _opc = opc;
             });
-            print(_opc);
-            //option = opc;
+            /*
+            if (_color == Colors.orange)
+              _color = Colors.green;
+            else
+              _color = Colors.orange;*/
           },
-          child: new Stack(children: <Widget>[
-            getBox(_color),
+          child: Stack(children: <Widget>[
+            getBox(),
           ]));
-    }
-
-    getOpc() {
-      return _opc;
     }
 
     return Scaffold(
         appBar: appBarbuild(context),
-        floatingActionButton: boomMenuBuild(context, 12),
-        body: Center(
+        body: SizedBox.expand(
+            child: Center(
           child: ListView(
               //mainAxisAlignment: MainAxisAlignment.start,
               //  crossAxisAlignment: CrossAxisAlignment.center,
@@ -96,38 +91,40 @@ class _ViewForm1State extends State<ViewForm1> {
                 Column(children: [
                   Text("¿Dónde desea compostar?",
                       style: TextStyle(fontSize: 28)),
-                  buildImageButton(
-                      "lib/assets/img/jardin.png", "CAJAS O CONTENEDORES", 1),
+                  buildImageButton("lib/assets/img/contenedor.png",
+                      "CAJAS O CONTENEDORES", 1),
                   buildImageButton("lib/assets/img/jardin.png", "JARDÍN", 2),
                   Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         RaisedButton(
+                          color: Colors.red,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(18.0),
-                            side: BorderSide(color: Colors.transparent),
+                            side: BorderSide(color: Colors.red),
                           ),
                           child: const Text('Cancelar',
-                              style: TextStyle(fontSize: 20)),
+                              style:
+                                  TextStyle(fontSize: 20, color: Colors.white)),
                           onPressed: () {
                             Navigator.of(context).pop();
                           },
                         ),
                         RaisedButton(
+                          color: Colors.green,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(18.0),
-                            side: BorderSide(color: Colors.transparent),
+                            side: BorderSide(color: Colors.green),
                           ),
-                          child: const Text('Siguiente',
-                              style: TextStyle(fontSize: 20)),
+                          child: Text('Siguiente',
+                              style:
+                                  TextStyle(fontSize: 20, color: Colors.white)),
                           onPressed: () {
-                            int opc = getOpc();
-                            print(opc);
                             if (_opc == 1)
-                              Navigator.pushNamed(context, '/NewCompost2');
-                            else // if (_opc==2)
                               Navigator.pushNamed(context, '/NewCompost3');
+                            else // if (_opc==2)
+                              Navigator.pushNamed(context, '/NewCompost2');
                           },
                         ),
                       ]),
@@ -135,6 +132,6 @@ class _ViewForm1State extends State<ViewForm1> {
               ]
               //  getWidgets(context),
               ),
-        ));
+        )));
   }
 }

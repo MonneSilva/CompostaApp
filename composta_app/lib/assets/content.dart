@@ -33,7 +33,7 @@ class Sections {
               /*content*/ [
                 "lib/assets/img/Sobre_Composta.flr",
                 "Sobre Composta",
-                "Recuerda activar las notificaciones para que recibas alertas y recordatorios para mejor control de tu composta (de preferencia vincular a configuraciones para que de permisos.",
+                "Recuerda activar las notificaciones para que recibas alertas y recordatorios para mejor control de tu composta.",
               ]),
         ]),
     new Section(

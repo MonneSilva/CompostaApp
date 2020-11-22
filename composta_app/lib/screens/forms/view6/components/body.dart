@@ -17,12 +17,7 @@ class Residuo {
 class Body extends StatelessWidget {
   List<Residuo> fields = [
     new Residuo("Resiudos", "N", "C", "H2O"),
-    new Residuo("Frutas", "15", "8", "9"),
-    new Residuo("Frutas 1", "15", "8", "9"),
-    new Residuo("Frutas 2", "15", "8", "9"),
-    new Residuo("Frutas 3", "15", "8", "9"),
-    new Residuo("Frutas 4", "15", "8", "9"),
-    new Residuo("Frutas 5", "15", "8", "9"),
+    new Residuo("Frutas", "15", "8", "9")
   ];
   @override
   Widget build(BuildContext context) {
@@ -36,8 +31,7 @@ class Body extends StatelessWidget {
 
   List<Widget> getFields(fields, BuildContext context) {
     List<Widget> widget = List();
-    widget.add(Text("Cálculo de nutrientes",
-        textAlign: TextAlign.center, style: TextStyle(fontSize: 20)));
+    widget.add(Text("¿Qué residuos genera"));
     for (Residuo f in fields) {
       widget.add(field(f));
     }

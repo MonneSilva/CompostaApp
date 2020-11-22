@@ -68,29 +68,17 @@ class _DetailScreenState extends State<DetailScreen> {
         floatingActionButton: BoomMenu(
             animatedIcon: AnimatedIcons.menu_close,
             animatedIconTheme: IconThemeData(size: 22.0),
-            //child: Icon(Icons.add),
-            onOpen: () => print('OPENING DIAL'),
-            onClose: () => print('DIAL CLOSED'),
-            //scrollVisible: scrollVisible,
             overlayColor: Colors.black,
             overlayOpacity: 0.7,
             children: [
               MenuItem(
-                  child: Container(
-                      height: 50,
-                      child: Image.asset('lib/assets/img/logo.png',
-                          fit: BoxFit.cover, height: 250)),
                   title: "¿Cómo medir?",
                   titleColor: Colors.white,
-                  backgroundColor: Colors.blueAccent,
+                  backgroundColor: Colors.lightGreen,
                   onTap: () {
                     Navigator.of(context).pushNamed("/MeasuresGuide");
                   }),
               MenuItem(
-                  child: Container(
-                      height: 50,
-                      child: Image.asset('lib/assets/img/logo.png',
-                          fit: BoxFit.cover, height: 250)),
                   title: "Estadísticas",
                   titleColor: Colors.white,
                   backgroundColor: Colors.blueAccent,
@@ -98,15 +86,11 @@ class _DetailScreenState extends State<DetailScreen> {
                     // Navigator.of(context).pushNamed("/About");
                   }),
               MenuItem(
-                  child: Container(
-                      height: 50,
-                      child: Image.asset('lib/assets/img/logo.png',
-                          fit: BoxFit.cover, height: 250)),
                   title: "Eliminar",
                   titleColor: Colors.white,
-                  backgroundColor: Colors.blueAccent,
+                  backgroundColor: Colors.redAccent,
                   onTap: () {
-                    // Navigator.of(context).pushNamed("/About");
+                    Navigator.of(context).pop();
                   }),
             ]
             //getMenu(context, id),
@@ -122,10 +106,13 @@ class _DetailScreenState extends State<DetailScreen> {
               new Text("Control de hoy",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30)),
               new Container(
+                padding: const EdgeInsets.all(10),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    Text("Temperatura"),
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[Text("Temperatura")]),
                     TextField(
                       keyboardType: TextInputType.number,
                       inputFormatters: <TextInputFormatter>[
@@ -138,7 +125,9 @@ class _DetailScreenState extends State<DetailScreen> {
                             borderRadius: new BorderRadius.circular(25.0)),
                       ),
                     ),
-                    Text("pH"),
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[Text("pH")]),
                     TextField(
                       keyboardType: TextInputType.number,
                       inputFormatters: <TextInputFormatter>[
@@ -150,51 +139,15 @@ class _DetailScreenState extends State<DetailScreen> {
                               borderRadius: new BorderRadius.circular(25.0)),
                           hintText: "10.00"),
                     ),
-                    Text("Humedad"),
-                    IconButton(
-                      icon: Icon(Icons.info),
-                      onPressed: () {
-                        /*
-                        showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return AlertDialog(
-                                content: Stack(
-                                  overflow: Overflow.visible,
-                                  children: <Widget>[
-                                    CarouselSlider(
-                                        height: 400.0,
-                                        autoPlay: false,
-                                        aspectRatio: 2.0,
-                                        onPageChanged: (index) {
-                                          setState(() {
-                                            _currentIndex = index;
-                                          });
-                                        },
-                                        items: cardList.map((card) {
-                                          return Builder(
-                                              builder: (BuildContext context) {
-                                            return Container(
-                                              height: MediaQuery.of(context)
-                                                      .size
-                                                      .height *
-                                                  0.30,
-                                              width: MediaQuery.of(context)
-                                                  .size
-                                                  .width,
-                                              child: Card(
-                                                color: Colors.white,
-                                                child: card,
-                                              ),
-                                            );
-                                          });
-                                        }).toList())
-                                  ],
-                                ),
-                              );
-                            });*/
-                      },
-                    ),
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text("Humedad"),
+                          IconButton(
+                            icon: Icon(Icons.info),
+                            onPressed: () {},
+                          ),
+                        ]),
                     DropdownButtonFormField(
                         value: _value,
                         decoration: InputDecoration(

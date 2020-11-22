@@ -32,7 +32,8 @@ class _CarouselViewState extends State<CarouselView> {
         state = true;
       }
       var fragment = Fragment(
-          child: ListView(
+          child: SizedBox.expand(
+              child: ListView(
         children: <Widget>[
           Container(
             height: 80.0,
@@ -41,11 +42,11 @@ class _CarouselViewState extends State<CarouselView> {
               index.elementAt(i).title,
               textAlign: TextAlign.center,
               overflow: TextOverflow.ellipsis,
-              style: TextStyle(fontSize: 20),
+              style: TextStyle(fontSize: 30),
             ),
           ),
           Container(
-            height: 250.0,
+            height: 300.0,
             margin: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 50.0),
             child: FlareActor(index.elementAt(i).file,
                 animation: index.elementAt(i).animation),
@@ -54,14 +55,14 @@ class _CarouselViewState extends State<CarouselView> {
             ),*/
           ),
           Container(
-            height: 90.0,
+            height: 150.0,
             margin: const EdgeInsets.fromLTRB(50.0, 5.0, 50.0, 0.0),
             child: Text(
               index.elementAt(i).description,
               textAlign: TextAlign.center,
               overflow: TextOverflow.ellipsis,
               maxLines: 5,
-              style: TextStyle(fontSize: 15),
+              style: TextStyle(fontSize: 18),
             ),
           ),
           Container(
@@ -106,7 +107,7 @@ class _CarouselViewState extends State<CarouselView> {
             ),
           ),
         ],
-      ));
+      )));
       listings.add(
         fragment,
       );

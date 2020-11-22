@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:composta_app/screens/forms/view3/components/body.dart';
 import 'package:composta_app/tools/appbar.dart';
-import 'package:composta_app/tools/menu.dart';
 
 class ViewForm3 extends StatefulWidget {
   @override
@@ -23,7 +22,6 @@ class _ViewForm3State extends State<ViewForm3> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBarbuild(context),
-      floatingActionButton: boomMenuBuild(context, 12),
       body: Body(),
     );
   }

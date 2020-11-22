@@ -7,10 +7,6 @@ Widget boomMenuBuild(BuildContext context, int id) {
   return BoomMenu(
       animatedIcon: AnimatedIcons.menu_close,
       animatedIconTheme: IconThemeData(size: 22.0),
-      //child: Icon(Icons.add),
-      onOpen: () => print('OPENING DIAL'),
-      onClose: () => print('DIAL CLOSED'),
-      //scrollVisible: scrollVisible,
       overlayColor: Colors.black,
       overlayOpacity: 0.7,
       children: [
@@ -19,9 +15,9 @@ Widget boomMenuBuild(BuildContext context, int id) {
                 height: 50,
                 child: Image.asset('lib/assets/img/logo.png',
                     fit: BoxFit.cover, height: 250)),
-            title: "Acerca de",
+            title: "Acerca de COMPI",
             titleColor: Colors.white,
-            backgroundColor: Colors.blueAccent,
+            backgroundColor: Colors.lightGreen,
             onTap: () {
               Navigator.of(context).pushNamed("/About");
             }),

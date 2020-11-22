@@ -20,6 +20,7 @@ class _AboutScreenState extends State<AboutScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: appBarbuild(context),
       body: Center(
           child: Column(
@@ -30,14 +31,41 @@ class _AboutScreenState extends State<AboutScreen> {
           Text("Versión de aplicación",
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
           Text("1.0", style: TextStyle(fontSize: 15)),
-          Text("Proyecto desarrollado",
+          Text("Proyecto desarrollado en ",
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
-          Text("LABSOL y AMOXTLE", style: TextStyle(fontSize: 15)),
+          Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+            Container(
+                margin: new EdgeInsets.symmetric(vertical: 15.0),
+                alignment: FractionalOffset.centerLeft,
+                child: new Image(
+                  image: new AssetImage('lib/assets/img/labsol.png'),
+                  height: 130.0,
+                  width: 130.0,
+                )),
+            Container(
+              margin: new EdgeInsets.symmetric(vertical: 15.0),
+              alignment: FractionalOffset.centerLeft,
+              child: new Image(
+                image: new AssetImage('lib/assets/img/unnamed.png'),
+                height: 130.0,
+                width: 130.0,
+              ),
+            ),
+          ]),
           Text("Equipo desarrollador",
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
           Text(
               "José Ronaldo Díaz Paredes \n Abigail García Vanegas \n Karla Gabriela Isiordia Bautista \n Alejandro Hinojoza Pérez \n Cesar Ivan Martinez Martinez \n Montserrat Silva Cordero",
               style: TextStyle(fontSize: 15)),
+          Container(
+            margin: new EdgeInsets.all(15),
+            alignment: Alignment.center,
+            child: new Image(
+              image: new AssetImage('lib/assets/img/ipn.png'),
+              height: 130.0,
+              width: 130.0,
+            ),
+          ),
         ],
       )),
     );

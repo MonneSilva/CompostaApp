@@ -16,6 +16,8 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
+  int _opc = 1;
+  int _currentIndex = 0;
   @override
   void initState() {
     super.initState();
@@ -28,16 +30,9 @@ class _BodyState extends State<Body> {
 
   @override
   Widget build(BuildContext context) {
-    int _currentIndex = 0;
-    int _option = 1;
     List cardList1 = [
-      buildItem(
-          context,
-          "1",
-          "Cavar un orificio de poca profundidad (30cm).",
-          Animation(
-              file: "lib/assets/img/Contenedor_20L.flr",
-              animation: "")),
+      buildItem(context, "1", "Cavar un orificio de poca profundidad (30cm).",
+          Animation(file: "lib/assets/img/contenedor_20L.flr", animation: "")),
       buildItem(
           context,
           "2",
@@ -59,30 +54,27 @@ class _BodyState extends State<Body> {
           Animation(
               file: "lib/assets/img/Control_Composta.flr",
               animation: "Control_Corriendo")),
-              buildItem(
+      buildItem(
           context,
           "5",
           "Agregar una capa de material húmedo (vegetación verde) de 10 cm",
           Animation(
               file: "lib/assets/img/Control_Composta.flr",
               animation: "Control_Corriendo")),
-              buildItem(
+      buildItem(
           context,
           "6",
           "Agregar una capa más delgada de suelo.",
           Animation(
               file: "lib/assets/img/Control_Composta.flr",
               animation: "Control_Corriendo")),
-              buildItem(
+      buildItem(
           context,
           "7",
           "Posteriormente alternar capas de material café y residuos orgánicos.\nNota: procurar que la última capa sea de material café",
           Animation(
               file: "lib/assets/img/Control_Composta.flr",
               animation: "Control_Corriendo")),
-
-
-
     ];
     List cardList2 = [
       buildItem(
@@ -122,7 +114,7 @@ class _BodyState extends State<Body> {
               animation: "Control_Corriendo")),
     ];
     getcardList() {
-      if (_option == 1)
+      if (_opc == 1)
         return cardList1;
       else
         return cardList2;
@@ -158,14 +150,14 @@ class _BodyState extends State<Body> {
         ),
       );
 
-      getBox(Color color) {
+      getBox() {
         return new Container(
             child: boxContent,
             height: 130.0,
             width: 130.0,
             margin: new EdgeInsets.all(10),
             decoration: new BoxDecoration(
-              color: color,
+              color: (_opc == opc) ? Colors.orange : Colors.white,
               shape: BoxShape.rectangle,
               borderRadius: new BorderRadius.circular(8.0),
               boxShadow: <BoxShadow>[
@@ -178,20 +170,18 @@ class _BodyState extends State<Body> {
             ));
       }
 
-      Color _color = Colors.orange;
       return GestureDetector(
           onTap: () {
             setState(() {
-              _color = Colors.green;
-              _option = opc;
-              print(_option);
-              print(_color);
+              _opc = opc;
+              _currentIndex = 0;
+              print(_opc);
             });
 
             //option = opc;
           },
           child: new Stack(children: <Widget>[
-            getBox(_color),
+            getBox(),
           ]));
     }
 
@@ -213,8 +203,7 @@ class _BodyState extends State<Body> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                buildImageButton(
-                    "lib/assets/img/plant.png", "Hoyo", 1),
+                buildImageButton("lib/assets/img/plant.png", "Hoyo", 1),
                 buildImageButton(
                     "lib/assets/img/plant.png", "Malla métalica", 2),
               ],
@@ -255,8 +244,7 @@ class _BodyState extends State<Body> {
                 margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color:
-                      _currentIndex == index ? Colors.blueAccent : Colors.grey,
+                  color: _currentIndex == index ? Colors.green : Colors.grey,
                 ),
               );
             }),
@@ -276,12 +264,13 @@ class _BodyState extends State<Body> {
                   },
                 ),
                 RaisedButton(
+                  color: Colors.green,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(18.0),
-                    side: BorderSide(color: Colors.transparent),
+                    side: BorderSide(color: Colors.green),
                   ),
-                  child:
-                      const Text('Siguiente', style: TextStyle(fontSize: 20)),
+                  child: const Text('Siguiente',
+                      style: TextStyle(fontSize: 20, color: Colors.white)),
                   onPressed: () {
                     Navigator.pushNamed(context, '/NewCompost4');
                   },
@@ -306,13 +295,8 @@ Widget buildItem(BuildContext context, String number, String instruction,
     child: Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
-        Text(number,
-            style: TextStyle(
-                color: Colors.black,
-                fontSize: 20.0,
-                fontWeight: FontWeight.bold)),
         Container(
-            height: 180,
+            height: 220,
             child: FlareActor(animation.file, animation: animation.animation)),
         Flexible(
             child: Text(instruction,
