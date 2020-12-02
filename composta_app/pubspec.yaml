@@ -60,6 +60,32 @@ flutter:
     - lib/assets/img/vaciar_material_cafe.flr
     - lib/assets/img/perforaciones_0.flr
     - lib/assets/img/perforaciones_1.flr
+    - lib/assets/img/Postes.png
+    - lib/assets/img/Alambredesujecion.png
+    - lib/assets/img/Mallagrande.png
+  #Enumeracion de las animaciones
+    - lib/assets/img/01_contenedor_20l.flr
+    - lib/assets/img/02_perforaciones_1.flr
+    - lib/assets/img/03_perforaciones_2.flr
+    - lib/assets/img/04_vaciaraserrin_bote.flr
+    - lib/assets/img/05_cajas_o_contenedores.flr
+    - lib/assets/img/06_cortar_malla.flr
+    - lib/assets/img/07_colocar_malla.flr
+    - lib/assets/img/08_base_aserrin_cajas.flr
+    - lib/assets/img/09_relleno_residuosorganicos_cajas.flr
+    - lib/assets/img/10_orificio_jardin.flr
+    - lib/assets/img/11_caja_huecojardin.flr
+    - lib/assets/img/12_residuospicados_cajas.flr
+    - lib/assets/img/13_materialcafe_cajas.flr
+    - lib/assets/img/14_materialhumedo_cajas.flr
+    - lib/assets/img/15_capasuelo_cajas 1.flr
+    - lib/assets/img/16_alternarmaterial_cajas.flr
+    - lib/assets/img/17_unirmalla_poste.flr
+    - lib/assets/img/18_cilindro_jardin.flr
+    - lib/assets/img/19_temperature.flr
+    - lib/assets/img/20_humedad.flr
+    - lib/assets/img/21_ph_1.flr
+    - lib/assets/img/22_ph_2.flr
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
