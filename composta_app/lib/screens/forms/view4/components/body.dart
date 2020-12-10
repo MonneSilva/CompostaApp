@@ -43,7 +43,8 @@ class Body extends StatelessWidget {
       Text("¿Qué residuos genera?",
           textAlign: TextAlign.center, style: TextStyle(fontSize: 28)),
     );
-    widget.add(Text("Seleccione las opciones correspondientes:"));
+    widget.add(Text("Seleccione las opciones correspondientes:",
+        textAlign: TextAlign.center));
     for (String f in fields) {
       widget.add(Field(f, false).build(context));
     }

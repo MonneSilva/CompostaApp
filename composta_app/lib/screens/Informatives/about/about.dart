@@ -20,13 +20,12 @@ class _AboutScreenState extends State<AboutScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: appBarbuild(context),
-      body: Center(
+      body: SingleChildScrollView(
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Image.asset('lib/assets/img/logo-name.png',
+          Image.asset('lib/assets/img/Logo_sin_nombre.png',
               fit: BoxFit.cover, height: 250),
           Text("Versión de aplicación",
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
@@ -55,7 +54,7 @@ class _AboutScreenState extends State<AboutScreen> {
           Text("Equipo desarrollador",
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
           Text(
-              "José Ronaldo Díaz Paredes \n Abigail García Vanegas \n Karla Gabriela Isiordia Bautista \n Alejandro Hinojoza Pérez \n Cesar Ivan Martinez Martinez \n Montserrat Silva Cordero",
+              "José Ronaldo Díaz Paredes \nAbigail García Vanegas \nKarla Gabriela Isiordia Bautista \nLuis Alejandro Hinojosa Pérez \nCesar Ivan Martinez Martinez \nMontserrat Silva Cordero",
               style: TextStyle(fontSize: 15)),
           Container(
             margin: new EdgeInsets.all(15),

@@ -31,7 +31,7 @@ class Body extends StatelessWidget {
 
   List<Widget> getFields(fields, BuildContext context) {
     List<Widget> widget = List();
-    widget.add(Text("¿Qué residuos genera"));
+    widget.add(Text("¿Qué residuos genera?"));
     for (Residuo f in fields) {
       widget.add(field(f));
     }

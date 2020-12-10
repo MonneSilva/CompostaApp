@@ -44,12 +44,13 @@ class Body extends StatelessWidget {
       Text("¿Qué residuos genera?",
           textAlign: TextAlign.center, style: TextStyle(fontSize: 28)),
     );
-    widget.add(Text("Seleccione las opciones correspondientes:"));
+    widget.add(Text("Seleccione las opciones correspondientes:",
+        textAlign: TextAlign.center));
     for (String f in fields) {
       widget.add(Field(f).build(context));
     }
-    widget.add(
-      Row(
+    widget.add(Expanded(
+      child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -76,7 +77,7 @@ class Body extends StatelessWidget {
               },
             ),
           ]),
-    );
+    ));
     return widget;
   }
 }

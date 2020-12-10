@@ -26,7 +26,7 @@ class _BodyState extends State<Body> {
       buildItem(
           context,
           "1",
-          "Obtener un bote plástico de 20L o si se prefiere más grande en consideración de la cantidad de residuos generados",
+          "Obtener un bote plástico de 20L o si se prefiere más grande en consideración de la cantidad de residuos generados.",
           Animation(
               file: "lib/assets/img/contenedor_20.flr",
               animation: "contenedor_201")),
@@ -41,14 +41,14 @@ class _BodyState extends State<Body> {
       buildItem(
           context,
           "3",
-          "Perforar 5 orificios en la base del bote",
+          "Perforar 5 orificios en la base del bote.",
           Animation(
               file: "lib/assets/img/perforaciones_1.flr",
               animation: "perforaciones_1")),
       buildItem(
           context,
           "4",
-          "Colocar una capa de 10 cm de paja, aserrín o poda para que absorba el exceso de humedad",
+          "Colocar una capa de 10 cm de paja, aserrín o poda para que absorba el exceso de humedad.",
           Animation(
               file: "lib/assets/img/vaciar_material_cafe.flr",
               animation: "vaciar_material_cafe"))
@@ -167,7 +167,7 @@ class _BodyState extends State<Body> {
         padding: const EdgeInsets.all(5),
         children: <Widget>[
           Text(
-            "¿Donde desea compostar?",
+            "¿Dónde desea compostar?",
             style: TextStyle(fontSize: 28),
             textAlign: TextAlign.center,
           ),
@@ -181,7 +181,7 @@ class _BodyState extends State<Body> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 buildImageButton(
-                    "lib/assets/img/plant.png", "Contenedor o caja", 1),
+                    "lib/assets/img/plant.png", "Caja o Contenedor", 1),
                 buildImageButton(
                     "lib/assets/img/plant.png", "Multiples cajas", 2),
               ],

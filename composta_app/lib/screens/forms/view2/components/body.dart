@@ -43,21 +43,21 @@ class _BodyState extends State<Body> {
       buildItem(
           context,
           "3",
-          "Agregar los residuos previamente picados o cortados en trozos pequeños",
+          "Agregar los residuos previamente picados o cortados en trozos pequeños.",
           Animation(
               file: "lib/assets/img/Control_Composta.flr",
               animation: "Control_Corriendo")),
       buildItem(
           context,
           "4",
-          "Agregar una capa de materia café (vegetación seca) de 10 cm, en el caso de la caja hecha con pallets, este resulta el equivalente a 4 cubetas de 20 lt",
+          "Agregar una capa de materia café (vegetación seca) de 10 cm, en el caso de la caja hecha con pallets, este resulta el equivalente a 4 cubetas de 20 lt.",
           Animation(
               file: "lib/assets/img/Control_Composta.flr",
               animation: "Control_Corriendo")),
       buildItem(
           context,
           "5",
-          "Agregar una capa de material húmedo (vegetación verde) de 10 cm",
+          "Agregar una capa de material húmedo (vegetación verde) de 10 cm.",
           Animation(
               file: "lib/assets/img/Control_Composta.flr",
               animation: "Control_Corriendo")),
@@ -71,7 +71,7 @@ class _BodyState extends State<Body> {
       buildItem(
           context,
           "7",
-          "Posteriormente alternar capas de material café y residuos orgánicos.\nNota: procurar que la última capa sea de material café",
+          "Posteriormente alternar capas de material café y residuos orgánicos.\nNota: procurar que la última capa sea de material café.",
           Animation(
               file: "lib/assets/img/Control_Composta.flr",
               animation: "Control_Corriendo")),
@@ -87,7 +87,7 @@ class _BodyState extends State<Body> {
       buildItem(
           context,
           "2",
-          "Se requiere 3 o 4 postes de madera o de metal de poco más de 1m, preferentemente",
+          "Se requiere 3 o 4 postes de madera o de metal de poco más de 1m, preferentemente.",
           Animation(
               file: "lib/assets/img/Control_Composta.flr",
               animation: "Control_Corriendo")),
@@ -190,7 +190,7 @@ class _BodyState extends State<Body> {
         padding: const EdgeInsets.all(5),
         children: <Widget>[
           Text(
-            "¿Donde desea compostar?",
+            "¿Dónde desea compostar?",
             style: TextStyle(fontSize: 28),
             textAlign: TextAlign.center,
           ),
