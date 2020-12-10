@@ -24,9 +24,17 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Color.fromRGBO(174, 212, 236, 1),
         appBar: appBarbuild(context),
-        body: CarouselView(
-            getInfo(), new BtnContent("Comenzar", "", "/Home", 3)));
+        body: Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [Color.fromRGBO(174, 212, 236, 1), Colors.white])),
+          child: CarouselView(
+              getInfo(), new BtnContent("Comenzar", "", "/Home", 3)),
+        ));
   }
 
   List<CarouselWidgetContent> getInfo() {

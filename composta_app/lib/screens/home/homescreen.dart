@@ -36,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
             animatedIcon: AnimatedIcons.menu_close,
             animatedIconTheme: IconThemeData(size: 22.0),
             overlayColor: Colors.black,
-            overlayOpacity: 0.7,
+            overlayOpacity: 0.5,
             children: [
               MenuItem(
                   title: "Acerca de COMPI",

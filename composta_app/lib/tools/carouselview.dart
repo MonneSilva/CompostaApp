@@ -59,10 +59,12 @@ class _CarouselViewState extends State<CarouselView> {
             margin: const EdgeInsets.fromLTRB(50.0, 5.0, 50.0, 0.0),
             child: Text(
               index.elementAt(i).description,
-              textAlign: TextAlign.center,
+              textAlign: TextAlign.justify,
               overflow: TextOverflow.ellipsis,
               maxLines: 5,
-              style: TextStyle(fontSize: 18),
+              style: TextStyle(
+                fontSize: 18,
+              ),
             ),
           ),
           Container(
