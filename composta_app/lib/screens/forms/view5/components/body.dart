@@ -210,6 +210,7 @@ class _BodyState extends State<Body> {
                           c.insert(data);
                           Navigator.of(context).pushNamedAndRemoveUntil(
                               '/Home', (Route<dynamic> route) => false);
+                          //Navigator.of(context).popAndPushNamed('/Home');
                         },
                       ),
                     )

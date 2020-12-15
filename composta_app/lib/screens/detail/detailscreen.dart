@@ -48,14 +48,14 @@ class _DetailScreenState extends State<DetailScreen> {
                   onTap: () {
                     Navigator.of(context).pushNamed("/MeasuresGuide");
                   }),
-              MenuItem(
+              /*MenuItem(
                   title: "Estadísticas",
                   titleColor: Colors.white,
                   backgroundColor: Colors.blueAccent,
                   onTap: () {
                     Navigator.of(context)
                         .pushNamed("/Estadistics", arguments: data);
-                  }),
+                  }),*/
               MenuItem(
                   title: "Eliminar",
                   titleColor: Colors.white,
@@ -197,6 +197,12 @@ class _DetailScreenState extends State<DetailScreen> {
 
                           Map map = mi;
                           if (map.containsKey('control')) {
+                            List<dynamic> mo = map['control'];
+                            mo.add(m);
+                            print('maps:' + mo.toString());
+                            map['control'] = mo;
+                            data.setData(map);
+
                             print('existe');
                           } else {
                             maps.add(m);

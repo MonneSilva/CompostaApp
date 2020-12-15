@@ -26,87 +26,84 @@ class _BodyState extends State<Body> {
   Widget build(BuildContext context) {
     final Compost data = ModalRoute.of(context).settings.arguments as Compost;
     List cardList1 = [
-      buildItem(context, "1", "Cavar un orificio de poca profundidad (30cm).",
-          Animation(file: "lib/assets/img/contenedor_20L.flr", animation: "")),
+      buildItem(
+          context,
+          "1",
+          "Cavar un orificio de poca profundidad (30cm).",
+          Animation(
+              file: "lib/assets/img/10_orificio_jardin.flr",
+              animation: "10_orificio_jardin")),
       buildItem(
           context,
           "2",
           "Colocar una caja sin fondo, o colocar 4 pallets simulando la caja, con el fin de que el material esté en contacto con el suelo.",
           Animation(
-              file: "lib/assets/img/Control_Composta.flr",
-              animation: "Control_Corriendo")),
+              file: "lib/assets/img/11_caja_huecojardin.flr",
+              animation: "11_caja_huecojardin")),
       buildItem(
           context,
           "3",
           "Agregar los residuos previamente picados o cortados en trozos pequeños.",
           Animation(
-              file: "lib/assets/img/Control_Composta.flr",
-              animation: "Control_Corriendo")),
+              file: "lib/assets/img/12_residuospicados_cajas.flr",
+              animation: "12_residuospicados_cajas")),
       buildItem(
           context,
           "4",
           "Agregar una capa de materia café (vegetación seca) de 10 cm, en el caso de la caja hecha con pallets, este resulta el equivalente a 4 cubetas de 20 lt.",
           Animation(
-              file: "lib/assets/img/Control_Composta.flr",
-              animation: "Control_Corriendo")),
+              file: "lib/assets/img/13_materialcafe_cajas.flr",
+              animation: "13_materialcafe_cajas")),
       buildItem(
           context,
           "5",
           "Agregar una capa de material húmedo (vegetación verde) de 10 cm.",
           Animation(
-              file: "lib/assets/img/Control_Composta.flr",
-              animation: "Control_Corriendo")),
+              file: "lib/assets/img/14_materialhumedo_cajas.flr",
+              animation: "14_materialhumedo_cajas")),
       buildItem(
           context,
           "6",
           "Agregar una capa más delgada de suelo.",
           Animation(
-              file: "lib/assets/img/Control_Composta.flr",
-              animation: "Control_Corriendo")),
+              file: "lib/assets/img/15_capasuelo_cajas 1.flr",
+              animation: "15_capasuelo_cajas 1")),
       buildItem(
           context,
           "7",
           "Posteriormente alternar capas de material café y residuos orgánicos.\nNota: procurar que la última capa sea de material café.",
           Animation(
-              file: "lib/assets/img/Control_Composta.flr",
-              animation: "Control_Corriendo")),
+              file: "lib/assets/img/16_alternarmaterial_cajas.flr",
+              animation: "16_alternarmaterial_cajas")),
     ];
     List cardList2 = [
-      buildItem(
-          context,
-          "1",
-          "Se rewuiere una malla metálica 1m * 3m.",
-          Animation(
-              file: "lib/assets/img/Control_Composta.flr",
-              animation: "Control_Corriendo")),
+      buildItem(context, "1", "Se requiere una malla metálica 1m * 3m.",
+          Animation(file: "lib/assets/img/mallagrande.flr", animation: "")),
       buildItem(
           context,
           "2",
           "Se requiere 3 o 4 postes de madera o de metal de poco más de 1m, preferentemente.",
-          Animation(
-              file: "lib/assets/img/Control_Composta.flr",
-              animation: "Control_Corriendo")),
+          Animation(file: "lib/assets/img/postes.flr", animation: "")),
       buildItem(
           context,
           "3",
           "Se requiere alambres de sujeción.",
           Animation(
-              file: "lib/assets/img/Control_Composta.flr",
-              animation: "Control_Corriendo")),
+              file: "lib/assets/img/Alambredesujecion.flr", animation: "")),
       buildItem(
           context,
           "4",
           "Unir la malla de alambre a los postes, con el alambre de sujeción o con clavos, formando un cilindro o un cubo.",
           Animation(
-              file: "lib/assets/img/Control_Composta.flr",
-              animation: "Control_Corriendo")),
+              file: "lib/assets/img/17_unirmalla_poste.flr",
+              animation: "17_unirmalla_poste")),
       buildItem(
           context,
           "5",
           "Colocar el cilindro en el jardín, colocando una capa de materia café (vegetación seca) seguida de una capa de materia húmeda (vegetación verde y residuos orgánicos), llenar el cilindro intercalando capas.",
           Animation(
-              file: "lib/assets/img/Control_Composta.flr",
-              animation: "Control_Corriendo")),
+              file: "lib/assets/img/18_cilindro_jardin.flr",
+              animation: "18_cilindro_jardin")),
     ];
     getcardList() {
       if (_opc == 1)
@@ -128,17 +125,18 @@ class _BodyState extends State<Body> {
         margin: new EdgeInsets.all(20),
         constraints: new BoxConstraints.expand(),
         child: new Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            new Image(
+            /*new Image(
               image: new AssetImage(image),
               height: 50.0,
               width: 50.0,
-            ),
+            ),*/
             new Container(height: 2.0),
             Text(
               text,
-              style: TextStyle(fontSize: 15),
+              style: TextStyle(fontSize: 20),
               textAlign: TextAlign.center,
             ),
           ],
@@ -149,7 +147,7 @@ class _BodyState extends State<Body> {
         return new Container(
             child: boxContent,
             height: 130.0,
-            width: 130.0,
+            width: 160.0,
             margin: new EdgeInsets.all(10),
             decoration: new BoxDecoration(
               color: (_opc == opc) ? Colors.orange : Colors.white,
@@ -249,11 +247,13 @@ class _BodyState extends State<Body> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 RaisedButton(
+                  color: Colors.green,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(18.0),
-                    side: BorderSide(color: Colors.transparent),
+                    side: BorderSide(color: Colors.green),
                   ),
-                  child: const Text('Anterior', style: TextStyle(fontSize: 20)),
+                  child: const Text('Anterior',
+                      style: TextStyle(fontSize: 20, color: Colors.white)),
                   onPressed: () {
                     Navigator.of(context).pop();
                   },

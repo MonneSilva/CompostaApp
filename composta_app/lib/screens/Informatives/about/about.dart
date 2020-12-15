@@ -54,7 +54,7 @@ class _AboutScreenState extends State<AboutScreen> {
           Text("Equipo desarrollador",
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
           Text(
-              "José Ronaldo Díaz Paredes \nAbigail García Vanegas \nKarla Gabriela Isiordia Bautista \nLuis Alejandro Hinojosa Pérez \nCesar Ivan Martinez Martinez \nMontserrat Silva Cordero",
+              "Montserrat Silva Cordero \nLuis Alejandro Hinojosa Pérez \nJosé Ronaldo Díaz Paredes \nAbigail García Vanegas \nKarla Gabriela Isiordia Bautista \nCesar Ivan Martinez Martinez ",
               style: TextStyle(fontSize: 15)),
           Container(
             margin: new EdgeInsets.all(15),

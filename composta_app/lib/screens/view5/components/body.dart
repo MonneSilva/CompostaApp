@@ -4,9 +4,9 @@ import 'dart:math';
 import 'package:charts_flutter/flutter.dart' as charts;
 
 class Barras extends StatefulWidget {
-  final List<Values> dataList;
+  //final List<Values> dataList;
   //
-  Barras(this.dataList) : super();
+  Barras(/*this.dataList*/) : super();
 
   @override
   ChartsDemoState createState() => ChartsDemoState();
@@ -56,11 +56,9 @@ class ChartsDemoState extends State<Barras> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        padding: EdgeInsets.all(20.0),
-        child: barChart(),
-      ),
+    return Container(
+      padding: EdgeInsets.all(20.0),
+      child: barChart(),
     );
   }
 }

@@ -12,6 +12,7 @@ class _BodyState extends State<Body> {
   ResiduoDao c = ResiduoDao();
   List<Residuo> residuos = new List();
   Future _data;
+  List<TextEditingController> _controllers = new List();
 
   @override
   void initState() {
@@ -41,13 +42,14 @@ class _BodyState extends State<Body> {
                       print("asdff ${snapshot.data}");
                       return Container(color: Colors.red);
                     }
+
                     residuos = snapshot.data;
                     return ListView.builder(
                         itemCount: residuos.length,
                         itemBuilder: (context, index) {
 //Residuo residuo = residuos[index];
+                          _controllers.add(TextEditingController());
 
-                          final myController = TextEditingController();
                           return residuos.length == null
                               ? CircularProgressIndicator()
                               : Column(children: [
@@ -78,8 +80,10 @@ class _BodyState extends State<Body> {
                                               child: IconButton(
                                             icon: Icon(Icons.remove),
                                             onPressed: () {
-                                              myController.text = (double.parse(
-                                                          myController.text) -
+                                              _controllers[index]
+                                                  .text = (double.parse(
+                                                          _controllers[index]
+                                                              .text) -
                                                       1)
                                                   .toString();
                                             },
@@ -91,7 +95,7 @@ class _BodyState extends State<Body> {
                                                 residuos[index].data['Peso'] =
                                                     double.parse(value);
                                             },
-                                            controller: myController,
+                                            controller: _controllers[index],
                                             keyboardType: TextInputType.number,
                                             decoration: InputDecoration(
                                                 filled: true,
@@ -103,8 +107,10 @@ class _BodyState extends State<Body> {
                                               child: IconButton(
                                             icon: Icon(Icons.add),
                                             onPressed: () {
-                                              myController.text = (double.parse(
-                                                          myController.text) +
+                                              _controllers[index]
+                                                  .text = (double.parse(
+                                                          _controllers[index]
+                                                              .text) +
                                                       1)
                                                   .toString();
                                             },
@@ -122,10 +128,10 @@ class _BodyState extends State<Body> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     RaisedButton(
-                      color: Colors.red,
+                      color: Colors.green,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(18.0),
-                        side: BorderSide(color: Colors.red),
+                        side: BorderSide(color: Colors.green),
                       ),
                       child: const Text(' Anterior',
                           style: TextStyle(fontSize: 20, color: Colors.white)),

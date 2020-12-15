@@ -49,7 +49,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   titleColor: Colors.white,
                   backgroundColor: Colors.blueAccent,
                   onTap: () {
-                    Navigator.of(context).pushNamed("/Init");
+                    Navigator.of(context).pushNamed("/Welcome");
+                  }),
+              MenuItem(
+                  title: "Recomendaciones",
+                  titleColor: Colors.white,
+                  backgroundColor: Colors.orange,
+                  onTap: () {
+                    Navigator.of(context).pushNamed("/Rec");
                   }),
             ]
             //getMenu(context, id),

@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       theme: appTheme(),
       debugShowCheckedModeBanner: false,
       title: 'COMPI',
-      initialRoute: '/Welcome',
+      initialRoute: '/Home',
       routes: routes,
     );
   }

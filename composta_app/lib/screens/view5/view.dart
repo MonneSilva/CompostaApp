@@ -22,34 +22,35 @@ class _EstadisticsState extends State<Estadistics> {
   @override
   Widget build(BuildContext context) {
     final Compost data = ModalRoute.of(context).settings.arguments as Compost;
-
+    List<Values> temp = new List();
+    List<Values> ph = new List();
+    List<Values> humedad = new List();
     initData() {
-      List<Values> temp = new List();
       data.data['control'].forEach((element) {
         temp.add(new Values(element['fecha'], element['temperatura']));
       });
-      List<Values> ph = new List();
       data.data['control'].forEach((element) {
         ph.add(new Values(element['fecha'], element['ph']));
       });
-      List<Values> humedad = new List();
       data.data['control'].forEach((element) {
         humedad.add(new Values(element['fecha'], element['humedad']));
       });
     }
 
-    initData();
+    //initData();
 
     return Scaffold(
         appBar: appBarbuild(context),
-        body: ListView(children: [
-          Column(
-            children: [
-              Barras(temp),
-              Barras(ph),
-              Barras(humedad),
-            ],
-          )
-        ]));
+        body: SingleChildScrollView(
+            child: Column(
+          children: [
+            Text(
+              'Estadisticas',
+              style: TextStyle(fontSize: 28),
+              textAlign: TextAlign.center,
+            ),
+            Barras(),
+          ],
+        )));
   }
 }

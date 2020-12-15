@@ -31,30 +31,30 @@ class _BodyState extends State<Body> {
           "1",
           "Obtener un bote plástico de 20L o si se prefiere más grande en consideración de la cantidad de residuos generados.",
           Animation(
-              file: "lib/assets/img/contenedor_20.flr",
-              animation: "contenedor_201")),
+              file: "lib/assets/img/01_contenedor_20l.flr",
+              animation: "01_contenedor_20l")),
       buildItem(
           context,
           "2",
           "Perforar orificios con diámetro de 2-3 cm, en la pared del bote.\n" +
               "Hacer 3 filas de orificios cada 10 cm alrededor del contorno.",
           Animation(
-              file: "lib/assets/img/perforaciones_0.flr",
-              animation: "perforaciones_0")),
+              file: "lib/assets/img/02_perforaciones_1.flr",
+              animation: "02_perforaciones_1")),
       buildItem(
           context,
           "3",
           "Perforar 5 orificios en la base del bote.",
           Animation(
-              file: "lib/assets/img/perforaciones_1.flr",
-              animation: "perforaciones_1")),
+              file: "lib/assets/img/03_perforaciones_2.flr",
+              animation: "03_perforaciones_2")),
       buildItem(
           context,
           "4",
           "Colocar una capa de 10 cm de paja, aserrín o poda para que absorba el exceso de humedad.",
           Animation(
-              file: "lib/assets/img/vaciar_material_cafe.flr",
-              animation: "vaciar_material_cafe"))
+              file: "lib/assets/img/04_vaciaraserrin_bote.flr",
+              animation: "04_vaciaraserrin_bote"))
     ];
     List cardList2 = [
       buildItem(
@@ -62,36 +62,36 @@ class _BodyState extends State<Body> {
           "1",
           "Se pueden utilizar cajas de madera o plásticas que se utilizan para el transporte de frutas, botellas, etc.",
           Animation(
-              file: "lib/assets/img/Control_Composta.flr",
-              animation: "Control_Corriendo")),
+              file: "lib/assets/img/05_cajas_o_contenedores.flr",
+              animation: "05_cajas_o_contenedores")),
       buildItem(
           context,
           "2",
           "Conseguir malla metálica y recortarla en forma de cruz.",
           Animation(
-              file: "lib/assets/img/Control_Composta.flr",
-              animation: "Control_Corriendo")),
+              file: "lib/assets/img/06_cortar_malla.flr",
+              animation: "06_cortar_malla")),
       buildItem(
           context,
           "3",
           "Colocar y sujetar la malla en las paredes y base de las cajas para que contenga los residuos.",
           Animation(
-              file: "lib/assets/img/Control_Composta.flr",
-              animation: "Control_Corriendo")),
+              file: "lib/assets/img/07_colocar_malla.flr",
+              animation: "07_colocar_malla")),
       buildItem(
           context,
           "4",
           "Colocar una base de materia café (vegetación seca) en cada caja.",
           Animation(
-              file: "lib/assets/img/Control_Composta.flr",
-              animation: "Control_Corriendo")),
+              file: "lib/assets/img/08_base_aserrin_cajas.flr",
+              animation: "08_base_aserrin_cajas")),
       buildItem(
           context,
           "5",
           "Rellenar con los residuos orgánicos intercalando con capas de materia café. \nNota: procurar que la última capa sea de materia café.",
           Animation(
-              file: "lib/assets/img/Control_Composta.flr",
-              animation: "Control_Corriendo"))
+              file: "lib/assets/img/09_relleno_residuosorganicos_cajas.flr",
+              animation: "09_relleno_residuosorganicos_cajas"))
     ];
     getcardList() {
       if (_opc == 1)
@@ -113,17 +113,18 @@ class _BodyState extends State<Body> {
         margin: new EdgeInsets.all(20),
         constraints: new BoxConstraints.expand(),
         child: new Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            new Image(
+            /*new Image(
               image: new AssetImage(image),
               height: 50.0,
               width: 50.0,
-            ),
+            ),*/
             new Container(height: 2.0),
             Text(
               text,
-              style: TextStyle(fontSize: 15),
+              style: TextStyle(fontSize: 20),
               textAlign: TextAlign.center,
             ),
           ],
@@ -134,7 +135,7 @@ class _BodyState extends State<Body> {
         return new Container(
             child: boxContent,
             height: 130.0,
-            width: 130.0,
+            width: 160.0,
             margin: new EdgeInsets.all(10),
             decoration: new BoxDecoration(
               color: (_opc == opc) ? Colors.orange : Colors.white,
@@ -183,9 +184,10 @@ class _BodyState extends State<Body> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                buildImageButton("lib/assets/img/plant.png", "Hoyo", 1),
                 buildImageButton(
-                    "lib/assets/img/plant.png", "Malla métalica", 2),
+                    "lib/assets/img/plant.png", "Caja Contenedor", 1),
+                buildImageButton(
+                    "lib/assets/img/plant.png", "Multiples cajas", 2),
               ],
             ),
           ),
@@ -234,11 +236,13 @@ class _BodyState extends State<Body> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 RaisedButton(
+                  color: Colors.green,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(18.0),
-                    side: BorderSide(color: Colors.transparent),
+                    side: BorderSide(color: Colors.green),
                   ),
-                  child: const Text('Anterior', style: TextStyle(fontSize: 20)),
+                  child: const Text('Anterior',
+                      style: TextStyle(fontSize: 20, color: Colors.white)),
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
