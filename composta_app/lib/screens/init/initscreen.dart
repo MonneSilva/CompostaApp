@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:io';
+
 import 'package:composta_app/tools/appbar.dart';
 import 'package:flutter/material.dart';
 
@@ -8,8 +11,16 @@ class InitScreen extends StatefulWidget {
 
 class _InitScreenState extends State<InitScreen> {
   @override
-  void initState() {
+  initState() {
     super.initState();
+    //sleep(const Duration(seconds: 1));
+    //await Future.delayed(const Duration(seconds: 100), () => "1");
+    Timer(Duration(seconds: 5), () {
+      // 5s over, navigate to a new page
+      //Navigator.pushNamed(context, MaterialPageRoute(builder: (_) => Screen2()));
+
+      Navigator.of(context).popAndPushNamed('/Home');
+    });
   }
 
   @override
@@ -20,13 +31,13 @@ class _InitScreenState extends State<InitScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: appBarbuild(context),
-        body: Container(
-          height: 150.0,
-          margin: const EdgeInsets.fromLTRB(20.0, 50.0, 20.0, 50.0),
-          child: Image.asset(
-            "lib/assets/img/logo-name.png",
-          ),
-        ));
+        body: Center(
+            child: Container(
+      height: 280.0,
+      child: Image.asset(
+        "lib/assets/img/logo-name.png",
+        height: 250,
+      ),
+    )));
   }
 }

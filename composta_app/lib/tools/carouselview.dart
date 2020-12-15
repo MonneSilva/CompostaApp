@@ -74,11 +74,13 @@ class _CarouselViewState extends State<CarouselView> {
                 width: 20.0,
                 height: 30.0,
                 child: RaisedButton(
+                  color: Colors.green,
                   shape: RoundedRectangleBorder(
                     borderRadius: new BorderRadius.circular(18.0),
                     side: BorderSide(color: Colors.transparent),
                   ),
-                  child: Text(btn.text, style: TextStyle(fontSize: 20)),
+                  child: Text(btn.text,
+                      style: TextStyle(fontSize: 20, color: Colors.white)),
                   onPressed: () {
                     switch (btn.state) {
                       case 1:
