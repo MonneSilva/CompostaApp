@@ -46,7 +46,9 @@ flutter:
   assets:
     - lib/assets/json/compost.json
     - lib/assets/json/residuos.json
-    
+    - lib/assets/img/mallagrande.flr
+    - lib/assets/img/postes.flr
+    - lib/assets/img/Alambredesujecion.flr
     - lib/assets/img/plant.png
     - lib/assets/img/logo.png
     - lib/assets/img/logo-name.png
