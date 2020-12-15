@@ -5,8 +5,10 @@ import 'package:composta_app/src/boom_menu_item.dart';
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 import 'package:composta_app/tools/appbar.dart';
+import 'dart:convert';
 //import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/services.dart';
+import 'package:sembast/utils/value_utils.dart';
 
 class DetailScreen extends StatefulWidget {
   @override
@@ -51,7 +53,8 @@ class _DetailScreenState extends State<DetailScreen> {
                   titleColor: Colors.white,
                   backgroundColor: Colors.blueAccent,
                   onTap: () {
-                    // Navigator.of(context).pushNamed("/About");
+                    Navigator.of(context)
+                        .pushNamed("/Estadistics", arguments: data);
                   }),
               MenuItem(
                   title: "Eliminar",
@@ -177,14 +180,33 @@ class _DetailScreenState extends State<DetailScreen> {
                             style:
                                 TextStyle(fontSize: 20, color: Colors.white)),
                         onPressed: () {
-                          Map m = {
-                            'fecha': DateTime.now().toString().split(' ')[0],
-                            'temperatura': _temp.text,
-                            'ph': _ph.text,
-                            'humedad': _value.toString()
-                          };
+                          Map mi = cloneMap(data.data);
+                          List<Map> maps = new List();
+                          Map<String, dynamic> m = Map.from(json.decode(
+                              '{"fecha":' +
+                                  '"' +
+                                  DateTime.now().toString().split(' ')[0] +
+                                  '"' +
+                                  ',"temperatura":' +
+                                  _temp.text +
+                                  ',"ph": ' +
+                                  _ph.text +
+                                  ',"humedad":' +
+                                  _value.toString() +
+                                  '}'));
 
-                          // c.update(data);
+                          Map map = mi;
+                          if (map.containsKey('control')) {
+                            print('existe');
+                          } else {
+                            maps.add(m);
+                            print(maps.toString());
+                            mi['control'] = maps;
+                            data.setData(mi);
+                            print('no existe');
+                          }
+
+                          c.update(data);
                           Navigator.of(context).pop();
                         },
                       ),

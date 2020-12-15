@@ -7,7 +7,7 @@
             "H2O": 70,
             "UM":"gr",
             "Peso":0.00,
-            "value":true
+            "value":false
         },
         {
             "Material": "Lodos activados crudos",
@@ -16,7 +16,7 @@
             "H2O": 75.00,
             "UM":"gr",
             "Peso":0.00,
-            "value":true
+            "value":false
         },
         {
             "Material": "Estiércol de aves de corral",
@@ -25,7 +25,7 @@
             "H2O": 95.00,
             "UM":"gr",
             "Peso":0.00,
-            "value":true
+            "value":false
         },
         {
             "Material": "Lodos activados digeridos",
@@ -34,7 +34,7 @@
             "H2O": 75,
             "UM":"gr",
             "Peso":0.00,
-            "value":true
+            "value":false
         },
         {
             "Material": "Estiércol de vaca",
@@ -43,7 +43,7 @@
             "H2O": 90,
             "UM":"gr",
             "Peso":0.00,
-            "value":true
+            "value":false
         },
         {
             "Material": "Estiércol de cerdo",
@@ -52,7 +52,7 @@
             "H2O": 92,
             "UM":"gr",
             "Peso":0.00,
-            "value":true
+            "value":false
         },
         {
             "Material": "Pasto",
@@ -61,7 +61,7 @@
             "H2O": 70,
             "UM":"gr",
             "Peso":0.00,
-            "value":true
+            "value":false
         },
         {
             "Material": "Maleza acuática",
@@ -70,7 +70,7 @@
             "H2O": 96,
             "UM":"gr",
             "Peso":0.00,
-            "value":true
+            "value":false
         },
         {
             "Material": "Estiércol de oveja",
@@ -79,7 +79,7 @@
             "H2O": 75,
             "UM":"gr",
             "Peso":0.00,
-            "value":true
+            "value":false
         },
         {
             "Material": "Estiércol de caballo",
@@ -88,7 +88,7 @@
             "H2O": 90,
             "UM":"gr",
             "Peso":0.00,
-            "value":true
+            "value":false
         },
         {
             "Material": "Residuos de fruta",
@@ -97,7 +97,7 @@
             "H2O": 75,
             "UM":"gr",
             "Peso":0.00,
-            "value":true
+            "value":false
         },
         {
             "Material": "Paja de avena",
@@ -106,7 +106,7 @@
             "H2O": 30,
             "UM":"gr",
             "Peso":0.00,
-            "value":true
+            "value":false
         },
         {
             "Material": "Fracción orgánica de RSU",
@@ -115,7 +115,7 @@
             "H2O": 65,
             "UM":"gr",
             "Peso":0.00,
-            "value":true
+            "value":false
         },
         {
             "Material": "Hojas caidas recientemente",
@@ -124,7 +124,7 @@
             "H2O": 60,
             "UM":"gr",
             "Peso":0.00,
-            "value":true
+            "value":false
         },
         {
             "Material": "Paja de trigo",
@@ -133,7 +133,7 @@
             "H2O": 30,
             "UM":"gr",
             "Peso":0.00,
-            "value":true
+            "value":false
         },
         {
             "Material": "Residuos de aserraderos",
@@ -142,7 +142,7 @@
             "H2O": 25,
             "UM":"gr",
             "Peso":0.00,
-            "value":true
+            "value":false
         },
         {
             "Material": "Papel mezclado",
@@ -151,7 +151,7 @@
             "H2O": 6,
             "UM":"gr",
             "Peso":0.00,
-            "value":true
+            "value":false
         },
         {
             "Material": "Aserrin",
@@ -160,7 +160,7 @@
             "H2O": 20,
             "UM":"gr",
             "Peso":0.00,
-            "value":true
+            "value":false
         },
         {
             "Material": "Revistas commerciales",
@@ -169,7 +169,7 @@
             "H2O": 5,
             "UM":"gr",
             "Peso":0.00,
-            "value":true
+            "value":false
         },
         {
             "Material": "Madera",
@@ -178,7 +178,7 @@
             "H2O": 20,
             "UM":"gr",
             "Peso":0.00,
-            "value":true
+            "value":false
         },
         {
             "Material": "Papel periódico",
@@ -187,7 +187,7 @@
             "H2O": 6,
             "UM":"gr",
             "Peso":0.00,
-            "value":true
+            "value":false
         },
         {
             "Material": "Papel estraza",
@@ -196,7 +196,7 @@
             "H2O": 5,
             "UM":"gr",
             "Peso":0.00,
-            "value":true
+            "value":false
         },
         {
             "Material": "Agua",
@@ -205,7 +205,7 @@
             "H2O": 100,
             "UM":"ml",
             "Peso":0.00,
-            "value":true
+            "value":false
         }
 
     ]

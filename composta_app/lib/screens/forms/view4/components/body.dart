@@ -11,10 +11,12 @@ class Body extends StatefulWidget {
 class _BodyState extends State<Body> {
   ResiduoDao c = ResiduoDao();
   List<Residuo> residuos = new List();
+  Future _data;
 
   @override
   void initState() {
     super.initState();
+    _data = c.getAll();
   }
 
   @override
@@ -43,32 +45,27 @@ class _BodyState extends State<Body> {
                     return ListView.builder(
                         itemCount: residuos.length,
                         itemBuilder: (context, index) {
-                          Residuo residuo = residuos[index];
+//Residuo residuo = residuos[index];
 
                           final myController = TextEditingController();
                           return residuos.length == null
                               ? CircularProgressIndicator()
                               : Column(children: [
-                                  Row(children: <Widget>[
-                                    Expanded(
-                                        child:
-                                            new Text(residuo.data['Material'])),
-                                    Checkbox(
-                                      value: residuo.data['value'],
-                                      onChanged: (bool value) {
-                                        setState(() {
-                                          residuo.data['value'] =
-                                              !residuo.data['value'];
-                                          print(value);
-                                        });
-                                        value
-                                            ? residuos.add(residuo)
-                                            : residuos.remove(residuo);
-                                      },
-                                    ),
-                                  ]),
+                                  CheckboxListTile(
+                                    title:
+                                        Text(residuos[index].data['Material']),
+                                    controlAffinity:
+                                        ListTileControlAffinity.leading,
+                                    value: residuos[index].data['value'],
+                                    onChanged: (bool value) {
+                                      this.setState(() {
+                                        residuos[index].data['value'] = value;
+                                        print(value);
+                                      });
+                                    },
+                                  ),
                                   Visibility(
-                                    visible: residuo.data['value'],
+                                    visible: residuos[index].data['value'],
                                     child: Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceAround,
@@ -90,8 +87,8 @@ class _BodyState extends State<Body> {
                                           Expanded(
                                               child: TextFormField(
                                             onChanged: (value) {
-                                              if (residuo.data['value'])
-                                                residuo.data['Peso'] =
+                                              if (residuos[index].data['value'])
+                                                residuos[index].data['Peso'] =
                                                     double.parse(value);
                                             },
                                             controller: myController,
@@ -99,7 +96,8 @@ class _BodyState extends State<Body> {
                                             decoration: InputDecoration(
                                                 filled: true,
                                                 hintText: '0.00',
-                                                labelText: residuo.data['UM']),
+                                                labelText:
+                                                    residuos[index].data['UM']),
                                           )),
                                           Expanded(
                                               child: IconButton(
@@ -116,7 +114,7 @@ class _BodyState extends State<Body> {
                                 ]);
                         });
                   },
-                  future: c.getAll(),
+                  future: _data,
                 ),
               ),
               Row(

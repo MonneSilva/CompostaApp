@@ -9,6 +9,7 @@ import 'package:composta_app/screens/forms/view4/view.dart';
 import 'package:composta_app/screens/forms/view5/view.dart';
 import 'package:composta_app/screens/home/homescreen.dart';
 import 'package:composta_app/screens/init/initscreen.dart';
+import 'package:composta_app/screens/view5/view.dart';
 import 'package:composta_app/screens/welcome/welcomescreen.dart';
 import 'package:flutter/widgets.dart';
 
@@ -25,4 +26,5 @@ final Map<String, WidgetBuilder> routes = <String, WidgetBuilder>{
   "/NewCompost5": (BuildContext context) => ViewForm5(),
   "/MeasuresGuide": (BuildContext context) => MeasuresScreen(),
   "/About": (BuildContext context) => AboutScreen(),
+  "/Estadistics": (BuildContext context) => Estadistics(),
 };
