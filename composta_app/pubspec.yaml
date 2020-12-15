@@ -23,6 +23,11 @@ dependencies:
   url_launcher: ^3.0.0
   charts_flutter: ^0.9.0
   carousel_slider: ^1.4.1
+  path_provider: ^1.6.24
+  sembast: ^2.4.8
+  json_serializable: ^3.2.5
+  json_annotation: ^3.0.1
+
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -39,6 +44,9 @@ dev_dependencies:
 # The following section is specific to Flutter.
 flutter:
   assets:
+    - lib/assets/json/compost.json
+    - lib/assets/json/residuos.json
+    
     - lib/assets/img/plant.png
     - lib/assets/img/logo.png
     - lib/assets/img/logo-name.png
@@ -52,6 +60,7 @@ flutter:
     - lib/assets/img/Humedad.flr
     - lib/assets/img/PH.flr
     - lib/assets/img/contenedor.png
+    - lib/assets/img/add.png
     - lib/assets/img/jardin.png
     - lib/assets/img/Control_Composta.flr
     - lib/assets/img/PF.flr

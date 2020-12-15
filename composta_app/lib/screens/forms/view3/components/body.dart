@@ -1,15 +1,17 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:composta_app/dataModel/composta/compost.dart';
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class Body extends StatefulWidget {
   @override
   State createState() => new _BodyState();
 }
 
 class _BodyState extends State<Body> {
-  int _currentIndex = 0;
   int _opc = 1;
+  int _currentIndex = 0;
   @override
   void initState() {
     super.initState();
@@ -22,6 +24,7 @@ class _BodyState extends State<Body> {
 
   @override
   Widget build(BuildContext context) {
+    final Compost data = ModalRoute.of(context).settings.arguments as Compost;
     List cardList1 = [
       buildItem(
           context,
@@ -114,8 +117,8 @@ class _BodyState extends State<Body> {
           children: <Widget>[
             new Image(
               image: new AssetImage(image),
-              height: 70.0,
-              width: 70.0,
+              height: 50.0,
+              width: 50.0,
             ),
             new Container(height: 2.0),
             Text(
@@ -130,8 +133,8 @@ class _BodyState extends State<Body> {
       getBox() {
         return new Container(
             child: boxContent,
-            height: 150.0,
-            width: 150.0,
+            height: 130.0,
+            width: 130.0,
             margin: new EdgeInsets.all(10),
             decoration: new BoxDecoration(
               color: (_opc == opc) ? Colors.orange : Colors.white,
@@ -151,8 +154,8 @@ class _BodyState extends State<Body> {
           onTap: () {
             setState(() {
               _opc = opc;
-              print(_opc);
               _currentIndex = 0;
+              print(_opc);
             });
 
             //option = opc;
@@ -180,10 +183,9 @@ class _BodyState extends State<Body> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
+                buildImageButton("lib/assets/img/plant.png", "Hoyo", 1),
                 buildImageButton(
-                    "lib/assets/img/plant.png", "Caja o Contenedor", 1),
-                buildImageButton(
-                    "lib/assets/img/plant.png", "Multiples cajas", 2),
+                    "lib/assets/img/plant.png", "Malla métalica", 2),
               ],
             ),
           ),
@@ -206,6 +208,7 @@ class _BodyState extends State<Body> {
                   height: MediaQuery.of(context).size.height * 0.30,
                   width: MediaQuery.of(context).size.width,
                   child: Card(
+                    color: Colors.white,
                     child: card,
                   ),
                 );
@@ -246,10 +249,11 @@ class _BodyState extends State<Body> {
                     borderRadius: BorderRadius.circular(18.0),
                     side: BorderSide(color: Colors.green),
                   ),
-                  child: Text('Siguiente',
+                  child: const Text('Siguiente',
                       style: TextStyle(fontSize: 20, color: Colors.white)),
                   onPressed: () {
-                    Navigator.pushNamed(context, '/NewCompost4');
+                    Navigator.pushNamed(context, '/NewCompost4',
+                        arguments: data);
                   },
                 ),
               ]),

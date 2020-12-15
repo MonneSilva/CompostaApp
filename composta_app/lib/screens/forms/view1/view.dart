@@ -1,5 +1,9 @@
+import 'dart:convert';
+
+import 'package:composta_app/dataModel/composta/compost.dart';
 import 'package:flutter/material.dart';
 import 'package:composta_app/tools/appbar.dart';
+import 'package:flutter/services.dart';
 
 class ViewForm1 extends StatefulWidget {
   @override
@@ -8,10 +12,17 @@ class ViewForm1 extends StatefulWidget {
 
 class _ViewForm1State extends State<ViewForm1> {
   int _opc;
+  Compost composta;
+  final myController = TextEditingController();
+
   @override
   void initState() {
     super.initState();
     _opc = 1;
+    composta = new Compost(
+        id: null,
+        data: Map.castFrom(
+            json.decode('{"nombre":"","fecha":"","tipo":"","icon":""}')));
   }
 
   @override
@@ -89,6 +100,22 @@ class _ViewForm1State extends State<ViewForm1> {
               padding: const EdgeInsets.all(5),
               children: [
                 Column(children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Expanded(
+                          flex: 2,
+                          child:
+                              Text("Nombre:", style: TextStyle(fontSize: 20))),
+                      Expanded(
+                          flex: 5,
+                          child: TextFormField(
+                              controller: myController,
+                              decoration:
+                                  InputDecoration(hintText: 'Mi compi')))
+                    ],
+                  ),
                   Text("¿Dónde desea compostar?",
                       style: TextStyle(fontSize: 28)),
                   buildImageButton("lib/assets/img/contenedor.png",
@@ -121,10 +148,24 @@ class _ViewForm1State extends State<ViewForm1> {
                               style:
                                   TextStyle(fontSize: 20, color: Colors.white)),
                           onPressed: () {
-                            if (_opc == 1)
-                              Navigator.pushNamed(context, '/NewCompost3');
-                            else // if (_opc==2)
-                              Navigator.pushNamed(context, '/NewCompost2');
+                            composta.data['nombre'] = myController.text;
+                            composta.data['fecha'] =
+                                DateTime.now().toString().split(' ')[0];
+
+                            if (_opc == 1) {
+                              composta.data['tipo'] = 'Cajas';
+                              composta.data['icon'] =
+                                  'lib/assets/img/contenedor.png';
+                              Navigator.pushNamed(context, '/NewCompost3',
+                                  arguments: composta);
+                            } else {
+                              // if (_opc==2)
+                              composta.data['tipo'] = 'Jardin';
+                              composta.data['icon'] =
+                                  'lib/assets/img/jardin.png';
+                              Navigator.pushNamed(context, '/NewCompost2',
+                                  arguments: composta);
+                            }
                           },
                         ),
                       ]),

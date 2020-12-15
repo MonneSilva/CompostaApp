@@ -1,3 +1,5 @@
+import 'package:composta_app/dataModel/composta/compost.dart';
+import 'package:composta_app/dataModel/composta/compost_dao.dart';
 import 'package:composta_app/src/boom_menu.dart';
 import 'package:composta_app/src/boom_menu_item.dart';
 import 'package:flare_flutter/flare_actor.dart';
@@ -12,6 +14,9 @@ class DetailScreen extends StatefulWidget {
 }
 
 class _DetailScreenState extends State<DetailScreen> {
+  final _temp = TextEditingController();
+  final _ph = TextEditingController();
+  CompostDao c = new CompostDao();
   @override
   void initState() {
     super.initState();
@@ -24,45 +29,8 @@ class _DetailScreenState extends State<DetailScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final Compost data = ModalRoute.of(context).settings.arguments as Compost;
     int _value = 1;
-    /* int _currentIndex = 0;
-    List cardList = [
-      buildItem(
-          context,
-          "1",
-          "Se rewuiere una malla metálica 1m * 3m.",
-          Animation(
-              file: "lib/assets/img/Control_Composta.flr",
-              animation: "Control_Corriendo")),
-      buildItem(
-          context,
-          "2",
-          "Se requiere 3 o 4 postes de madera o de metal de poco más de 1m, preferentemente",
-          Animation(
-              file: "lib/assets/img/Control_Composta.flr",
-              animation: "Control_Corriendo")),
-      buildItem(
-          context,
-          "3",
-          "Se requiere alambres de sujeción.",
-          Animation(
-              file: "lib/assets/img/Control_Composta.flr",
-              animation: "Control_Corriendo")),
-      buildItem(
-          context,
-          "4",
-          "Unir la malla de alambre a los postes, con el alambre de sujeción o con clavos, formando un cilindro o un cubo.",
-          Animation(
-              file: "lib/assets/img/Control_Composta.flr",
-              animation: "Control_Corriendo")),
-      buildItem(
-          context,
-          "5",
-          "Colocar el cilindro en el jardín, colocando una capa de materia café (vegetación seca) seguida de una capa de materia húmeda (vegetación verde y residuos orgánicos), llenar el cilindro intercalando capas.",
-          Animation(
-              file: "lib/assets/img/Control_Composta.flr",
-              animation: "Control_Corriendo")),
-    ];*/
     return Scaffold(
         appBar: appBarbuild(context),
         floatingActionButton: BoomMenu(
@@ -90,65 +58,76 @@ class _DetailScreenState extends State<DetailScreen> {
                   titleColor: Colors.white,
                   backgroundColor: Colors.redAccent,
                   onTap: () {
-                    Navigator.of(context).pop();
+                    c.delete(int.parse(data.data['_id']));
+                    Navigator.of(context).pushNamedAndRemoveUntil(
+                        '/Home', (Route<dynamic> route) => false);
                   }),
             ]
             //getMenu(context, id),
             ),
         body: Center(
+            child:
+                Column(mainAxisAlignment: MainAxisAlignment.start, children: <
+                    Widget>[
+          new Container(
+              height: 180,
+              child: FlareActor("lib/assets/img/Control_Composta.flr",
+                  animation: "Control_Corriendo")),
+          new Text("Control de hoy",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30)),
+          new Container(
+            padding: const EdgeInsets.all(10),
             child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-              new Container(
-                  height: 180,
-                  child: FlareActor("lib/assets/img/Control_Composta.flr",
-                      animation: "Control_Corriendo")),
-              new Text("Control de hoy",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30)),
-              new Container(
-                padding: const EdgeInsets.all(10),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[Text("Temperatura")]),
-                    TextField(
-                      keyboardType: TextInputType.number,
-                      inputFormatters: <TextInputFormatter>[
-                        FilteringTextInputFormatter.digitsOnly
-                      ],
-                      decoration: InputDecoration(
-                        hintText: "10.00",
-                        fillColor: Colors.white,
-                        border: new OutlineInputBorder(
-                            borderRadius: new BorderRadius.circular(25.0)),
-                      ),
-                    ),
-                    Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[Text("pH")]),
-                    TextField(
-                      keyboardType: TextInputType.number,
-                      inputFormatters: <TextInputFormatter>[
-                        FilteringTextInputFormatter.digitsOnly
-                      ],
-                      decoration: InputDecoration(
-                          fillColor: Colors.white,
-                          border: new OutlineInputBorder(
-                              borderRadius: new BorderRadius.circular(25.0)),
-                          hintText: "10.00"),
-                    ),
-                    Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Text("Humedad"),
-                          IconButton(
-                            icon: Icon(Icons.info),
-                            onPressed: () {},
-                          ),
-                        ]),
-                    DropdownButtonFormField(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Expanded(flex: 2, child: Text("Temperatura")),
+                      Expanded(
+                          flex: 5,
+                          child: TextField(
+                            controller: _temp,
+                            keyboardType: TextInputType.number,
+                            inputFormatters: <TextInputFormatter>[
+                              FilteringTextInputFormatter.digitsOnly
+                            ],
+                            decoration: InputDecoration(
+                              border: new OutlineInputBorder(
+                                  borderRadius:
+                                      new BorderRadius.circular(25.0)),
+                            ),
+                          )),
+                      Expanded(flex: 1, child: Text(" °C")),
+                    ]),
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Expanded(flex: 2, child: Text("pH")),
+                      Expanded(
+                          flex: 5,
+                          child: TextField(
+                            controller: _ph,
+                            keyboardType: TextInputType.number,
+                            inputFormatters: <TextInputFormatter>[
+                              FilteringTextInputFormatter.digitsOnly
+                            ],
+                            decoration: InputDecoration(
+                              fillColor: Colors.white,
+                              border: new OutlineInputBorder(
+                                  borderRadius:
+                                      new BorderRadius.circular(25.0)),
+                            ),
+                          )),
+                      Expanded(flex: 1, child: Text(" ")),
+                    ]),
+
+                Row(mainAxisAlignment: MainAxisAlignment.center, children: <
+                    Widget>[
+                  Expanded(flex: 2, child: Text("Humedad")),
+                  Expanded(
+                    flex: 5,
+                    child: DropdownButtonFormField(
                         value: _value,
                         decoration: InputDecoration(
                           fillColor: Colors.white,
@@ -162,13 +141,58 @@ class _DetailScreenState extends State<DetailScreen> {
                         ],
                         onChanged: (value) {
                           _value = value;
-                        })
-                    //  actionsButtonsBuild(context, "Cancelar", "Registrar", "pop", "pop")
-                    //getField(section),
-                  ],
+                        }),
+                  ),
+                  Expanded(flex: 1, child: Text(" ")),
+                ]),
+                Container(
+                  height: 20,
                 ),
-              )
-            ])));
+                //  actionsButtonsBuild(context, "Cancelar", "Registrar", "pop", "pop")
+                //getField(section),
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      RaisedButton(
+                        color: Colors.red,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18.0),
+                          side: BorderSide(color: Colors.red),
+                        ),
+                        child: const Text('Cancelar',
+                            style:
+                                TextStyle(fontSize: 20, color: Colors.white)),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                      RaisedButton(
+                        color: Colors.green,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18.0),
+                          side: BorderSide(color: Colors.green),
+                        ),
+                        child: Text('Registrar',
+                            style:
+                                TextStyle(fontSize: 20, color: Colors.white)),
+                        onPressed: () {
+                          Map m = {
+                            'fecha': DateTime.now().toString().split(' ')[0],
+                            'temperatura': _temp.text,
+                            'ph': _ph.text,
+                            'humedad': _value.toString()
+                          };
+
+                          // c.update(data);
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                    ])
+              ],
+            ),
+          )
+        ])));
   }
 }
 

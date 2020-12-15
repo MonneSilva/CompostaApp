@@ -1,0 +1,212 @@
+{
+    "residuos": [
+        {
+            "Material": "Residuos mezclados de rastros",
+            "N": 2.55,
+            "C": 5.1,
+            "H2O": 70,
+            "UM":"gr",
+            "Peso":0.00,
+            "value":true
+        },
+        {
+            "Material": "Lodos activados crudos",
+            "N": 1.4,
+            "C": 8.82,
+            "H2O": 75.00,
+            "UM":"gr",
+            "Peso":0.00,
+            "value":true
+        },
+        {
+            "Material": "Estiércol de aves de corral",
+            "N": 0.315,
+            "C": 4.73,
+            "H2O": 95.00,
+            "UM":"gr",
+            "Peso":0.00,
+            "value":true
+        },
+        {
+            "Material": "Lodos activados digeridos",
+            "N": 0.47,
+            "C": 7.38,
+            "H2O": 75,
+            "UM":"gr",
+            "Peso":0.00,
+            "value":true
+        },
+        {
+            "Material": "Estiércol de vaca",
+            "N": 0.17,
+            "C": 3.06,
+            "H2O": 90,
+            "UM":"gr",
+            "Peso":0.00,
+            "value":true
+        },
+        {
+            "Material": "Estiércol de cerdo",
+            "N": 0.3,
+            "C": 6,
+            "H2O": 92,
+            "UM":"gr",
+            "Peso":0.00,
+            "value":true
+        },
+        {
+            "Material": "Pasto",
+            "N": 0.645,
+            "C": 12.96,
+            "H2O": 70,
+            "UM":"gr",
+            "Peso":0.00,
+            "value":true
+        },
+        {
+            "Material": "Maleza acuática",
+            "N": 0.078,
+            "C": 1.64,
+            "H2O": 96,
+            "UM":"gr",
+            "Peso":0.00,
+            "value":true
+        },
+        {
+            "Material": "Estiércol de oveja",
+            "N": 0.938,
+            "C": 20.63,
+            "H2O": 75,
+            "UM":"gr",
+            "Peso":0.00,
+            "value":true
+        },
+        {
+            "Material": "Estiércol de caballo",
+            "N": 0.23,
+            "C": 5.75,
+            "H2O": 90,
+            "UM":"gr",
+            "Peso":0.00,
+            "value":true
+        },
+        {
+            "Material": "Residuos de fruta",
+            "N": 0.38,
+            "C": 13.22,
+            "H2O": 75,
+            "UM":"gr",
+            "Peso":0.00,
+            "value":true
+        },
+        {
+            "Material": "Paja de avena",
+            "N": 0.735,
+            "C": 35.28,
+            "H2O": 30,
+            "UM":"gr",
+            "Peso":0.00,
+            "value":true
+        },
+        {
+            "Material": "Fracción orgánica de RSU",
+            "N": 0.189,
+            "C": 9.58,
+            "H2O": 65,
+            "UM":"gr",
+            "Peso":0.00,
+            "value":true
+        },
+        {
+            "Material": "Hojas caidas recientemente",
+            "N": 0.3,
+            "C": 18,
+            "H2O": 60,
+            "UM":"gr",
+            "Peso":0.00,
+            "value":true
+        },
+        {
+            "Material": "Paja de trigo",
+            "N": 0.21,
+            "C": 26.88,
+            "H2O": 30,
+            "UM":"gr",
+            "Peso":0.00,
+            "value":true
+        },
+        {
+            "Material": "Residuos de aserraderos",
+            "N": 0.098,
+            "C": 16.58,
+            "H2O": 25,
+            "UM":"gr",
+            "Peso":0.00,
+            "value":true
+        },
+        {
+            "Material": "Papel mezclado",
+            "N": 0.235,
+            "C": 40.66,
+            "H2O": 6,
+            "UM":"gr",
+            "Peso":0.00,
+            "value":true
+        },
+        {
+            "Material": "Aserrin",
+            "N": 0.08,
+            "C": 28,
+            "H2O": 20,
+            "UM":"gr",
+            "Peso":0.00,
+            "value":true
+        },
+        {
+            "Material": "Revistas commerciales",
+            "N": 0.067,
+            "C": 31.26,
+            "H2O": 5,
+            "UM":"gr",
+            "Peso":0.00,
+            "value":true
+        },
+        {
+            "Material": "Madera",
+            "N": 0.056,
+            "C": 40.49,
+            "H2O": 20,
+            "UM":"gr",
+            "Peso":0.00,
+            "value":true
+        },
+        {
+            "Material": "Papel periódico",
+            "N": 0.047,
+            "C": 46.2,
+            "H2O": 6,
+            "UM":"gr",
+            "Peso":0.00,
+            "value":true
+        },
+        {
+            "Material": "Papel estraza",
+            "N": 0.01,
+            "C": 42.66,
+            "H2O": 5,
+            "UM":"gr",
+            "Peso":0.00,
+            "value":true
+        },
+        {
+            "Material": "Agua",
+            "N": 0,
+            "C": 0,
+            "H2O": 100,
+            "UM":"ml",
+            "Peso":0.00,
+            "value":true
+        }
+
+    ]
+}

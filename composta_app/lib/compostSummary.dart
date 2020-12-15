@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'dataModel/compost.dart';
+import 'dataModel/composta/compost.dart';
 
 class CompostSummary extends StatelessWidget {
   final Compost compost;
@@ -11,16 +11,18 @@ class CompostSummary extends StatelessWidget {
 
     //Imagen
     final cardImage = new Container(
-      margin: new EdgeInsets.symmetric(vertical: 15.0),
-      alignment: FractionalOffset.centerLeft,
-      child: new Image(
+        margin: new EdgeInsets.symmetric(vertical: 15.0),
+        alignment: FractionalOffset.centerLeft,
+        child: Text(
+            '') /* new Image(
         image: new AssetImage(compost.image),
         height: 130.0,
         width: 130.0,
-      ),
-    );
+      ),*/
+        );
 
 //Texto de card
+/*
     final cardContent = new Container(
       margin: new EdgeInsets.fromLTRB(80.0, 16.0, 16.0, 16.0),
       constraints: new BoxConstraints.expand(),
@@ -65,10 +67,6 @@ class CompostSummary extends StatelessWidget {
           cardDetail,
           cardImage,
         ]));
+  }*/
   }
-}
-
-class ScreenArguments {
-  final Compost compost;
-  ScreenArguments(this.compost);
 }

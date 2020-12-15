@@ -1,76 +1,259 @@
+import 'package:composta_app/dataModel/composta/compost.dart';
+import 'package:composta_app/dataModel/composta/compost_dao.dart';
+import 'package:composta_app/dataModel/residuo/residuo.dart';
+import 'package:composta_app/dataModel/residuo/residuo_dao.dart';
 import 'package:flutter/material.dart';
 
-class Residuo {
-  String residuo;
-  String n;
-  String c;
-  String h20;
-  Residuo(String s, String t, String u, String v) {
-    this.residuo = s;
-    this.n = t;
-    this.c = u;
-    this.h20 = v;
-  }
+class Body extends StatefulWidget {
+  @override
+  _BodyState createState() => _BodyState();
 }
 
-// ignore: must_be_immutable
-class Body extends StatelessWidget {
-  List<Residuo> fields = [
-    new Residuo("Resiudos", "N", "C", "H2O"),
-    new Residuo("Frutas", "15", "8", "9"),
-    new Residuo("Frutas 1", "15", "8", "9"),
-    new Residuo("Frutas 2", "15", "8", "9"),
-    new Residuo("Frutas 3", "15", "8", "9"),
-    new Residuo("Frutas 4", "15", "8", "9"),
-    new Residuo("Frutas 5", "15", "8", "9"),
-  ];
+class _BodyState extends State<Body> {
+  ResiduoDao c = ResiduoDao();
+  List<Residuo> residuos = new List();
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: ListView(
-        padding: const EdgeInsets.all(5),
-        children: getFields(fields, context),
-      ),
-    );
-  }
-
-  List<Widget> getFields(fields, BuildContext context) {
-    List<Widget> widget = List();
-    widget.add(Text("Cálculo de nutrientes",
-        textAlign: TextAlign.center, style: TextStyle(fontSize: 20)));
-    for (Residuo f in fields) {
-      widget.add(field(f));
+    final Compost data = ModalRoute.of(context).settings.arguments as Compost;
+    print('Data on 5:' + data.data.toString());
+    getResiduos() async {
+      List<Residuo> res = new List();
+      for (Map i in data.data['residuos']) {
+        Residuo r = Residuo(id: null, data: i);
+        res.add(r);
+      }
+      residuos = res;
+      return res;
     }
-    widget.add(RaisedButton(
-      shape: RoundedRectangleBorder(
-        borderRadius: new BorderRadius.circular(18.0),
-        side: BorderSide(color: Colors.transparent),
-      ),
-      child: const Text('Finalizar', style: TextStyle(fontSize: 20)),
-      onPressed: () {
-        Navigator.of(context).pushNamedAndRemoveUntil(
-            '/CompostDetail', ModalRoute.withName('/Home'));
-      },
-    ));
-    return widget;
+
+    return Container(
+        child: Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Column(children: <Widget>[
+              Text('Nutrientes',
+                  textAlign: TextAlign.center, style: TextStyle(fontSize: 28)),
+              Row(children: <Widget>[
+                Expanded(
+                    flex: 2,
+                    child: Text('Material',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 20))),
+                Expanded(
+                    child: Text('N',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 20))),
+                Expanded(
+                    child: Text('C',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 20))),
+                Expanded(
+                    child: Text('H2O',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 20))),
+              ]),
+              Expanded(
+                child: FutureBuilder<List<Residuo>>(
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.none &&
+                          snapshot.hasData == null) {
+                        print("asdff ${snapshot.data}");
+                        return Container(color: Colors.red);
+                      }
+                      residuos = snapshot.data;
+                      return ListView.builder(
+                          itemCount: residuos.length,
+                          itemBuilder: (context, index) {
+                            Residuo residuo = residuos[index];
+                            return residuos.length == null
+                                ? CircularProgressIndicator()
+                                : Column(children: [
+                                    Row(children: <Widget>[
+                                      Expanded(
+                                          flex: 2,
+                                          child: Text(residuo.data['Material'],
+                                              style: TextStyle(fontSize: 16))),
+                                      Expanded(
+                                          child: Text(
+                                              ((residuo.data['Peso'] *
+                                                          residuo.data['N']) /
+                                                      100)
+                                                  .toStringAsFixed(2),
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(fontSize: 16))),
+                                      Expanded(
+                                          child: Text(
+                                              ((residuo.data['Peso'] *
+                                                          residuo.data['C']) /
+                                                      100)
+                                                  .toStringAsFixed(2),
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(fontSize: 16))),
+                                      Expanded(
+                                          child: Text(
+                                              ((residuo.data['Peso'] *
+                                                          residuo.data['H2O']) /
+                                                      100)
+                                                  .toStringAsFixed(2),
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(fontSize: 16))),
+                                    ]),
+                                    Container(
+                                      height: 5,
+                                      color: Colors.lightBlue[100],
+                                    )
+                                  ]);
+                          });
+                    },
+                    future: getResiduos()),
+              ),
+              Row(children: <Widget>[
+                Expanded(
+                    flex: 2,
+                    child: Text('Total:',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 20, color: Colors.lightGreen[900]))),
+                Expanded(
+                    child: Text(getN().toStringAsFixed(2),
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 20))),
+                Expanded(
+                    child: Text(getC().toStringAsFixed(2),
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 20))),
+                Expanded(
+                    child: Text(getH2O().toStringAsFixed(2),
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 20))),
+              ]),
+              Row(children: <Widget>[
+                Expanded(
+                    flex: 2,
+                    child: Text('C/N:',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 20, color: Colors.lightGreen[900]))),
+                Expanded(
+                    child: Text(getCN().toStringAsFixed(2) + ' %',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 20))),
+              ]),
+              Visibility(
+                visible: (getCN() >= 25 && getCN() <= 35) ? false : true,
+                child: Text(
+                  '*El porcentaje de C/N deberá encontrarse en 25-35%',
+                  style: TextStyle(color: Colors.red),
+                ),
+              ),
+              Row(children: <Widget>[
+                Expanded(
+                    flex: 2,
+                    child: Text('Humedad:',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 20, color: Colors.lightGreen[900]))),
+                Expanded(
+                    child: Text(getHumedad().toStringAsFixed(2) + ' %',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 20))),
+              ]),
+              Visibility(
+                visible: (getHumedad() >= 50) ? false : true,
+                child: Text(
+                  '*El porcentaje de Humedad deberá ser mayor de 50%.',
+                  style: TextStyle(color: Colors.red),
+                ),
+              ),
+              Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    RaisedButton(
+                      color: Colors.green,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18.0),
+                        side: BorderSide(color: Colors.green),
+                      ),
+                      child: Text('Anterior',
+                          style: TextStyle(fontSize: 20, color: Colors.white)),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                    Visibility(
+                      visible: ((getCN() >= 25 && getCN() <= 35) &&
+                              getHumedad() >= 50)
+                          ? true
+                          : false,
+                      child: RaisedButton(
+                        color: Colors.green,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18.0),
+                          side: BorderSide(color: Colors.green),
+                        ),
+                        child: Text('Finalizar',
+                            style:
+                                TextStyle(fontSize: 20, color: Colors.white)),
+                        onPressed: () {
+                          CompostDao c = new CompostDao();
+                          c.insert(data);
+                          Navigator.of(context).pushNamedAndRemoveUntil(
+                              '/Home', (Route<dynamic> route) => false);
+                        },
+                      ),
+                    )
+                  ]),
+            ])));
   }
 
-  Widget field(Residuo text) => Container(
-          child: Center(
-              child: Column(children: <Widget>[
-        Container(
-          margin: EdgeInsets.all(10),
-          child: Table(
-            border: TableBorder.all(),
-            children: [
-              TableRow(children: [
-                Column(children: [Text(text.residuo)]),
-                Column(children: [Text(text.n)]),
-                Column(children: [Text(text.c)]),
-                Column(children: [Text(text.h20)]),
-              ]),
-            ],
-          ),
-        ),
-      ])));
+  getN() {
+    double total = 1;
+    residuos.forEach((residuo) {
+      total += (residuo.data['Peso'] * residuo.data['N']) / 100;
+    });
+    return total;
+  }
+
+  getPeso() {
+    double total = 1;
+    residuos.forEach((residuo) {
+      total += residuo.data['Peso'];
+    });
+    return total;
+  }
+
+  getHumedad() {
+    return (getPeso() / getH2O()) * 100;
+  }
+
+  getCN() {
+    return (getC() / getH2O()) * 100;
+  }
+
+  getC() {
+    double total = 0;
+    residuos.forEach((residuo) {
+      total += (residuo.data['Peso'] * residuo.data['C']) / 100;
+    });
+    return total;
+  }
+
+  getH2O() {
+    double total = 0;
+    residuos.forEach((residuo) {
+      total += (residuo.data['Peso'] * residuo.data['H2O']) / 100;
+    });
+    return total;
+  }
 }

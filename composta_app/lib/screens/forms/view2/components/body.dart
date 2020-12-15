@@ -1,13 +1,7 @@
-//import 'package:composta_app/tools/carouselview.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:composta_app/dataModel/composta/compost.dart';
 import 'package:flare_flutter/flare_actor.dart';
-//import 'package:flare_flutter/flare_actor.dart';
-//import 'package:carousel_widget/carousel_widget.dart';
-//import 'package:composta_app/tools/carouselview.dart';
-//import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
-//import 'package:composta_app/tools/buttonimage.dart';
-//import 'package:composta_app/tools/carouselcontent.dart';
 
 // ignore: must_be_immutable
 class Body extends StatefulWidget {
@@ -30,6 +24,7 @@ class _BodyState extends State<Body> {
 
   @override
   Widget build(BuildContext context) {
+    final Compost data = ModalRoute.of(context).settings.arguments as Compost;
     List cardList1 = [
       buildItem(context, "1", "Cavar un orificio de poca profundidad (30cm).",
           Animation(file: "lib/assets/img/contenedor_20L.flr", animation: "")),
@@ -272,7 +267,8 @@ class _BodyState extends State<Body> {
                   child: const Text('Siguiente',
                       style: TextStyle(fontSize: 20, color: Colors.white)),
                   onPressed: () {
-                    Navigator.pushNamed(context, '/NewCompost4');
+                    Navigator.pushNamed(context, '/NewCompost4',
+                        arguments: data);
                   },
                 ),
               ]),

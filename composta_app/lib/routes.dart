@@ -6,7 +6,6 @@ import 'package:composta_app/screens/forms/view1/view.dart';
 import 'package:composta_app/screens/forms/view2/view.dart';
 import 'package:composta_app/screens/forms/view3/view.dart';
 import 'package:composta_app/screens/forms/view4/view.dart';
-import 'package:composta_app/screens/forms/view7/view.dart';
 import 'package:composta_app/screens/forms/view5/view.dart';
 import 'package:composta_app/screens/home/homescreen.dart';
 import 'package:composta_app/screens/init/initscreen.dart';
@@ -24,7 +23,6 @@ final Map<String, WidgetBuilder> routes = <String, WidgetBuilder>{
   "/NewCompost3": (BuildContext context) => ViewForm3(),
   "/NewCompost4": (BuildContext context) => ViewForm4(),
   "/NewCompost5": (BuildContext context) => ViewForm5(),
-  "/NewCompost7": (BuildContext context) => ViewForm7(),
   "/MeasuresGuide": (BuildContext context) => MeasuresScreen(),
   "/About": (BuildContext context) => AboutScreen(),
 };
