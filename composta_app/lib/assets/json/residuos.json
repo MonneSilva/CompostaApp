@@ -1,37 +1,10 @@
 {
     "residuos": [
         {
-            "Material": "Residuos mezclados de rastros",
-            "N": 2.55,
-            "C": 5.1,
-            "H2O": 70,
-            "UM":"gr",
-            "Peso":0.00,
-            "value":false
-        },
-        {
-            "Material": "Lodos activados crudos",
-            "N": 1.4,
-            "C": 8.82,
-            "H2O": 75.00,
-            "UM":"gr",
-            "Peso":0.00,
-            "value":false
-        },
-        {
             "Material": "Estiércol de aves de corral",
             "N": 0.315,
             "C": 4.73,
             "H2O": 95.00,
-            "UM":"gr",
-            "Peso":0.00,
-            "value":false
-        },
-        {
-            "Material": "Lodos activados digeridos",
-            "N": 0.47,
-            "C": 7.38,
-            "H2O": 75,
             "UM":"gr",
             "Peso":0.00,
             "value":false
@@ -163,7 +136,7 @@
             "value":false
         },
         {
-            "Material": "Revistas commerciales",
+            "Material": "Revistas comerciales",
             "N": 0.067,
             "C": 31.26,
             "H2O": 5,
