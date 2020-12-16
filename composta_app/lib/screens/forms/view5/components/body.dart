@@ -209,8 +209,7 @@ class _BodyState extends State<Body> {
                           CompostDao c = new CompostDao();
                           c.insert(data);
                           Navigator.of(context).pushNamedAndRemoveUntil(
-                              '/Home', (Route<dynamic> route) => false);
-                          //Navigator.of(context).popAndPushNamed('/Home');
+                              '/Init', (Route<dynamic> route) => false);
                         },
                       ),
                     )

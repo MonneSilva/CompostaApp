@@ -13,12 +13,7 @@ class _InitScreenState extends State<InitScreen> {
   @override
   initState() {
     super.initState();
-    //sleep(const Duration(seconds: 1));
-    //await Future.delayed(const Duration(seconds: 100), () => "1");
     Timer(Duration(seconds: 5), () {
-      // 5s over, navigate to a new page
-      //Navigator.pushNamed(context, MaterialPageRoute(builder: (_) => Screen2()));
-
       Navigator.of(context).popAndPushNamed('/Home');
     });
   }

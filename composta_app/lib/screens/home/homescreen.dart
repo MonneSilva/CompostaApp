@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:composta_app/dataModel/composta/compost_dao.dart';
@@ -19,6 +20,12 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
+    _compostas = c.getAll();
+  }
+
+  @override
+  void setState(fn) {
+    super.setState(fn);
     _compostas = c.getAll();
   }
 
